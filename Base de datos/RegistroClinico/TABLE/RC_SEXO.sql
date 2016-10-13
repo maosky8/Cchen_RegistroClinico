@@ -1,0 +1,19 @@
+CREATE TABLE RC_SEXO
+(
+RC_SEXO_id smallint NOT NULL IDENTITY(1,1),
+RC_SEXO_nombre varchar(10)
+PRIMARY KEY (RC_SEXO_id)
+)
+
+INSERT INTO dbo.RC_SEXO
+VALUES
+(
+'Masculino'
+)
+INSERT INTO dbo.RC_SEXO
+VALUES
+(
+'Femenino'
+)
+SELECT * FROM dbo.RC_SEXO rs
+

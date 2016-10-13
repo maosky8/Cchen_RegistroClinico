@@ -1,0 +1,7 @@
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Negocio\bin\Release\CCHEN_FichaMedica_Negocio.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Negocio\bin\Release\CCHEN_FichaMedica_Negocio.pdb
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Negocio\bin\Release\CCHEN_FichaMedica_Datos.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Negocio\bin\Release\CCHEN_FichaMedica_Datos.pdb
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Negocio\obj\Release\CCHEN_FichaMedica_Negocio.csprojResolveAssemblyReference.cache
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Negocio\obj\Release\CCHEN_FichaMedica_Negocio.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Negocio\obj\Release\CCHEN_FichaMedica_Negocio.pdb

@@ -1,0 +1,12 @@
+CREATE TABLE RC_TIPOCITA
+(
+RC_TIPOCITA_id smallint NOT NULL IDENTITY(1,1) ,
+RC_TIPOCITA_nombre varchar(50),
+RC_TIPOCITA_vigencia smallint,
+PRIMARY KEY (RC_TIPOCITA_id)
+)
+
+INSERT INTO dbo.RC_TIPOCITA VALUES('Enfermedad',1)
+INSERT INTO dbo.RC_TIPOCITA VALUES('Control de Licencia Operacional',1)
+INSERT INTO dbo.RC_TIPOCITA VALUES('Control de Salud Laboral',1)
+INSERT INTO dbo.RC_TIPOCITA VALUES('Emergencia',1)

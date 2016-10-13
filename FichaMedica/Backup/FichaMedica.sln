@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCHEN_FichaMedica_Web", "CCHEN_FichaMedica_Web\CCHEN_FichaMedica_Web.csproj", "{7BAA6109-E74D-40D2-B87E-D7EE9AD1B146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCHEN_FichaMedica_Negocio", "CCHEN_FichaMedica_Negocio\CCHEN_FichaMedica_Negocio.csproj", "{37ECABD6-5A68-4395-9BCB-963C7121C043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCHEN_FichaMedica_Datos", "CCHEN_FichaMedica_Datos\CCHEN_FichaMedica_Datos.csproj", "{6417ABFB-D0EE-409F-9701-C3C99AD20585}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BAA6109-E74D-40D2-B87E-D7EE9AD1B146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BAA6109-E74D-40D2-B87E-D7EE9AD1B146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BAA6109-E74D-40D2-B87E-D7EE9AD1B146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BAA6109-E74D-40D2-B87E-D7EE9AD1B146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37ECABD6-5A68-4395-9BCB-963C7121C043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37ECABD6-5A68-4395-9BCB-963C7121C043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37ECABD6-5A68-4395-9BCB-963C7121C043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37ECABD6-5A68-4395-9BCB-963C7121C043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6417ABFB-D0EE-409F-9701-C3C99AD20585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6417ABFB-D0EE-409F-9701-C3C99AD20585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6417ABFB-D0EE-409F-9701-C3C99AD20585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6417ABFB-D0EE-409F-9701-C3C99AD20585}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

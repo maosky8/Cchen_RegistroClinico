@@ -1,0 +1,386 @@
+/* CSS Document */
+
+#Logoimg {
+	font-family: Calibri, "Trebuchet MS", Verdana;
+	background-image: url(../Imagenes/logotipo.png);
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: -9999px;
+	height: 100px;
+	width: 300px;
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 30px;
+	background-color: transparent;
+	position: relative;
+	top: 10px;
+}
+.tituloFormulario
+{
+    font-size: 1.1em;
+    color: #666;
+    display: block;
+    border: 1px solid #ddd;
+    font-family: Calibri, "Trebuchet MS", Verdana;
+    margin: 7px 7px auto;
+    padding: 5px;
+    background-color: #eee;
+    text-align: center;
+}
+
+input, textarea, select, table
+{
+    font-family: Calibri, "Trebuchet MS" , Verdana;    
+    font-size: 0.9em;
+    color: #064A73;
+}
+
+.mayusculas
+{
+    text-transform: uppercase;
+}
+
+.obligatorio
+{
+    font-family: Calibri, "Trebuchet MS" , Verdana;
+    color: #800000;
+    font-size: small;
+}
+
+table.radioWithProperWrap input
+{
+    float: left;
+}
+
+table.radioWithProperWrap label
+{  
+    margin-left: 5px;
+    display: block;
+}
+
+#mask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}
+  
+#boxes .window {
+  position:absolute;
+  left:0;
+  top:0;
+  width:440px;
+  height:200px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+}
+
+#boxes #dialog {
+  width:605px; 
+  height:620px;
+  padding:10px;
+  background-color:#ffffff;
+}
+
+#boxes #dialog1 {
+  width:375px; 
+  height:203px;
+}
+
+#dialog1 .d-header {
+  background:url(images/login-header.png) no-repeat 0 0 transparent; 
+  width:375px; 
+  height:150px;
+}
+
+#dialog1 .d-header input {
+  position:relative;
+  top:60px;
+  left:100px;
+  border:3px solid #cccccc;
+  height:22px;
+  width:200px;
+  font-size:15px;
+  padding:5px;
+  margin-top:4px;
+}
+
+#dialog1 .d-blank {
+  float:left;
+  background:url(images/login-blank.png) no-repeat 0 0 transparent; 
+  width:267px; 
+  height:53px;
+}
+
+#dialog1 .d-login {
+  float:left;
+  width:108px; 
+  height:53px;
+}
+
+#boxes #dialog2 {
+  background:url(images/notice.png) no-repeat 0 0 transparent; 
+  width:326px; 
+  height:229px;
+  padding:50px 0 20px 25px;
+}
+
+#ContenedorSPS_DS1 {
+	font: Verdana, Geneva, sans-serif;
+	font-size: 100%;
+	width: 983px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	clear:both;
+	-moz-box-shadow: 1px 1px 5px #001f31; /* IMPORTANTE para navegadores Mozilla y otros que usen el mismo motor de render*/
+	-webkit-box-shadow: 1px 1px 7px #001f31; /* IMPORTANTE para navegadores Safari y otros que usen el mismo motor de render*/
+	border-radius: 10px;
+}
+
+.formularioSPS_PSCfg {
+	background:#fff;
+	padding:0.3em;
+	border:1px solid #e5e5e5;
+	margin:0.5em 0.5em 1em;
+	overflow: hidden;
+	font-size: 0.9em;
+}
+
+.Ckeck 
+{
+	text-align:left;	
+}
+
+.tablaOculta {
+	background:#fff;
+	padding:0.3em;
+	border:1px solid #e5e5e5;
+	margin:0.5em 0.5em 1em;
+	overflow: hidden;
+	font-size: 0.9em;
+	display: none;
+}
+
+/* Encabezado Colapsado */
+
+#encabezadoC {
+	overflow: auto;
+	height: 30px;
+	background-image: url(../Imagenes/top_BG.jpg);
+	background-repeat: repeat-x;
+	background-position: right top;
+	border-radius: 10px 10px 0 0;
+}
+#encabezadoC img{
+	width: 111px;
+	height: 30px;
+}
+#LogoMINVUC {
+	float: right;
+	display: block;
+	position: relative;
+	top: 0px;
+	right: 30px;
+}
+#LogoC {
+	font-family: Verdana;
+	text-decoration:none;
+	font-size: 200%;
+	color: #2d7bad;
+	margin: 0px;
+	background-color: transparent;
+	position: relative;
+	top: 30px;
+	left: 30px;
+}
+#sloganC {
+	font-family: Verdana;
+	font-size: 100%;
+	color: #2d7bad;
+	position: relative;
+	top: 35px;
+	left: 30px;
+}
+
+#LogoimgC {
+	font-family: Calibri, "Trebuchet MS", Verdana;
+	/*background-image: url(../img/logotipo.png);*/
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: -9999px;
+	/*height: 40px;
+	width: 300px;*/
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 30px;
+	background-color: transparent;
+	position: relative;
+	top: 10px;
+}
+
+/*MV*/
+.ltexto
+{
+	font-family: Verdana;
+	color: black;
+	font-style: normal;
+	font-size: 10px;
+	font-weight: normal;
+	text-transform: none;
+	text-decoration: none;
+	text-align: left;
+	height: 14px;
+	margin-left: 0px;
+	margin-bottom: 0px;	
+	vertical-align: middle;
+	border-right: silver 1px ridge;
+	border-top: silver 1px ridge;
+	border-left: silver 1px ridge;
+	border-bottom: silver 1px ridge;
+}
+
+.ltextobold
+{
+	font-family: Verdana;
+	color: black;
+	font-style: normal;
+	text-decoration: none;
+	font-size: 10px;
+	font-weight:bold;
+	height: 14px;
+	margin-left: 0px;
+	margin-bottom: 0px;	
+	vertical-align: middle;
+	text-transform: none;
+	text-decoration: none;
+}
+
+
+.cajaTexto
+{
+	font-style: normal;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: left;
+	text-transform: none;
+	margin-left: 0px;
+	margin-bottom: 0px;	
+	
+	
+}
+
+.comBox
+{
+	/*
+	text-transform: none;
+	font-family: Verdana;
+	color: black;
+	font-style: normal;
+	font-size: 10px;
+	height: 18px;
+	*/
+	
+	height: 22px;
+	font-style: normal;
+	font-size: 12px;
+	
+}
+
+.comBoxOrdenHistorica
+{
+	/*
+	text-transform: none;
+	font-family: Verdana;
+	color: black;
+	font-style: normal;
+	font-size: 10px;
+	height: 18px;
+	*/
+	
+	height: 25px;
+	font-style: normal;
+	font-size: 12px;
+	
+}
+
+.headerTable
+{
+	color: black;
+	font-style: normal;
+	font-size:small;
+	font-weight: bold;
+	height: 14px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	vertical-align: middle;
+	text-transform: none;
+	background-color: #98B9CB;
+}
+
+.headerTableGris
+{
+	font-family: Verdana;
+	color: black;
+	font-style: normal;
+	font-size: 10px;
+	font-weight: bold;
+	height: 14px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	vertical-align: middle;
+	text-transform: none;
+	background-color: #C0C0C0;
+}
+	
+	/* Menu */
+	
+.MenuHorizontalTabsMenuItem * div
+{
+    background:url(/imagenes/menutab.gif) no-repeat left top; 
+    height: 22px; 
+    padding-left: 9px; 
+    cursor: pointer;
+    width: 50px;
+}
+.MenuHorizontalTabsMenuItem * span
+{
+    background:url(/imagenes/menutab.gif) no-repeat right top; 
+    padding: 5px 15px 4px 6px; 
+    font-size: 10px; 
+    color: #333; 
+    height: 22px;
+    width: 50px;
+}
+.MenuHorizontalTabsSelectedMenuItem * div
+{
+    background-position: 0px -150px;
+}
+.MenuHorizontalTabsSelectedMenuItem * span
+{
+    background-position: 0px -150px;
+}
+.MenuHorizontalTabsHoverMenuItem * div
+{
+    background-position: 0px -150px;
+    color: Blue;
+    text-decoration: none;
+}
+.MenuHorizontalTabsHoverMenuItem * span
+{
+    background-position: 0px -150px;
+    color: Blue;
+    text-decoration: none;
+}
+.requiredField
+{
+	font-size: 15 px;
+	font-weight: bold;
+	color: Red;
+}

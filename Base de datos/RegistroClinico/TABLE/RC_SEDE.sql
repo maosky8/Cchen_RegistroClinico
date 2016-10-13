@@ -1,0 +1,23 @@
+CREATE TABLE RC_SEDE
+(
+RC_SEDE_id smallint NOT NULL IDENTITY(1,1),
+RC_SEDE_nombre varchar(20)
+PRIMARY KEY (RC_SEDE_id)
+)
+
+INSERT INTO dbo.RC_SEDE
+VALUES
+(
+'Sede Central'
+)
+INSERT INTO dbo.RC_SEDE
+VALUES
+(
+'Lo Aguirre'
+)
+INSERT INTO dbo.RC_SEDE
+VALUES
+(
+'La Reina'
+)
+SELECT * FROM dbo.RC_SEDE rs

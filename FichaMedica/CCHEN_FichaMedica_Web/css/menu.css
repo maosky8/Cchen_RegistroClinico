@@ -1,0 +1,86 @@
+#menu_sub {
+	padding: 0 30px;
+	height: 44px;
+	position: relative;
+	background: url(../Imagenes/menu_top-bg.jpg) repeat-x left top ;
+}
+#menu_sub li {
+	display: inline;
+	font-size: 75%;
+	float: left;
+	border-radius: 5px 5px 0 0;
+}
+#menu_sub li a {
+	display: block;
+	height: 24px;
+	padding: 17px 5px 3px;
+	margin: 0 1px;
+	text-decoration: none;
+	color: #fff;
+}
+#menu_sub li a:hover, #menu_sub li a:active{
+	background-image: url(../Imagenes/menuTop_hover.jpg);
+	background-repeat: repeat-x;
+	background-position: left top;
+	display: block;
+	border-radius: 5px 5px 0 0;
+}
+#menu_sub li span {
+	float: left;
+	position: absolute;
+	left:0; top:44px;
+	display: none;
+	width: 100%;
+	color: #990000;
+	border-top: solid 5px #A80000;
+}
+#menu_sub li:hover span { 
+	display: block;
+}
+#menu_sub li span a { 
+	display: block;
+	float: left;
+	padding: 6px 8px 0;
+	color: #990000;
+}
+#menu_sub li span a:hover,  #menu_sub li span a.active{
+	background: #A80000;
+	color: #FFF;
+	display: block;
+	border-radius: 0 0 5px 5px;
+}
+
+#DS1 {
+	font-family: Calibri, "Trebuchet MS", Verdana;
+	/*background-image: url(../imagenes/SPS.png);*/
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: -9999px;
+	height: 100px;
+	width: 415px;
+	margin-top: 0;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 30px;
+	background-color: transparent;
+	position: relative;
+	top: 8px;
+}
+
+#PSInf {
+	font-family: Calibri, "Trebuchet MS", Verdana;
+	/*background-image: url('../imagenes/Informes.png');*/
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: -9999px;
+	height: 92px;
+	width: 700px;
+	margin-top: 0;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 30px;
+	background-color: transparent;
+	position: relative;
+	top: 16px;
+    left: 44px;
+}

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{37ECABD6-5A68-4395-9BCB-963C7121C043}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CCHEN_FichaMedica_Negocio</RootNamespace>
+    <AssemblyName>CCHEN_FichaMedica_Negocio</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cita.cs" />
+    <Compile Include="Custom\DatosBuscadorCita.cs" />
+    <Compile Include="Custom\DatosBuscadorRegistroClinico.cs" />
+    <Compile Include="Custom\DatosDetalleCita.cs" />
+    <Compile Include="Custom\DatosNuevaCita.cs" />
+    <Compile Include="Custom\DatosNuevoArchivo.cs" />
+    <Compile Include="Custom\DatosNuevoPaciente.cs" />
+    <Compile Include="Custom\ResultadoBuscadorCita.cs" />
+    <Compile Include="Custom\ResultadoBuscadorRegistroClinico.cs" />
+    <Compile Include="Custom\ResultadoRegistroHistorico.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Paciente.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistroClinico.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CCHEN_FichaMedica_Datos\CCHEN_FichaMedica_Datos.csproj">
+      <Project>{6417ABFB-D0EE-409F-9701-C3C99AD20585}</Project>
+      <Name>CCHEN_FichaMedica_Datos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

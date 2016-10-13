@@ -1,0 +1,9 @@
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Web\bin\CCHEN_FichaMedica_Web.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Web\bin\CCHEN_FichaMedica_Web.pdb
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Web\bin\CCHEN_FichaMedica_Negocio.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Web\bin\CCHEN_FichaMedica_Negocio.pdb
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Web\obj\Debug\CCHEN_FichaMedica_Web.csprojResolveAssemblyReference.cache
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Web\obj\Debug\CCHEN_FichaMedica_Web.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Web\obj\Debug\CCHEN_FichaMedica_Web.pdb
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Web\bin\CCHEN_FichaMedica_Datos.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Web\bin\CCHEN_FichaMedica_Datos.pdb

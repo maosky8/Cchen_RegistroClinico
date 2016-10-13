@@ -1,0 +1,5 @@
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\bin\Release\CCHEN_FichaMedica_Datos.dll.config
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\bin\Release\CCHEN_FichaMedica_Datos.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\bin\Release\CCHEN_FichaMedica_Datos.pdb
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\obj\Release\CCHEN_FichaMedica_Datos.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\obj\Release\CCHEN_FichaMedica_Datos.pdb

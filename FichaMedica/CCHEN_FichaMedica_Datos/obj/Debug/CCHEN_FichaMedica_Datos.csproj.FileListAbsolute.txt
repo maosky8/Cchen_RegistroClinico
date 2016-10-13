@@ -1,0 +1,11 @@
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\bin\Debug\CCHEN_FichaMedica_Datos.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\bin\Debug\CCHEN_FichaMedica_Datos.pdb
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\obj\Debug\CCHEN_FichaMedica_Datos.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\obj\Debug\CCHEN_FichaMedica_Datos.pdb
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\CCHEN_FichaMedica_Datos\bin\Debug\CCHEN_FichaMedica_Datos.dll.config
+C:\Software\FichaMedica_20161003\FichaMedica\CCHEN_FichaMedica_Datos\bin\Debug\CCHEN_FichaMedica_Datos.dll.config
+C:\Software\FichaMedica_20161003\FichaMedica\CCHEN_FichaMedica_Datos\bin\Debug\CCHEN_FichaMedica_Datos.dll
+C:\Software\FichaMedica_20161003\FichaMedica\CCHEN_FichaMedica_Datos\bin\Debug\CCHEN_FichaMedica_Datos.pdb
+C:\Software\FichaMedica_20161003\FichaMedica\CCHEN_FichaMedica_Datos\obj\Debug\CCHEN_FichaMedica_Datos.csprojResolveAssemblyReference.cache
+C:\Software\FichaMedica_20161003\FichaMedica\CCHEN_FichaMedica_Datos\obj\Debug\CCHEN_FichaMedica_Datos.dll
+C:\Software\FichaMedica_20161003\FichaMedica\CCHEN_FichaMedica_Datos\obj\Debug\CCHEN_FichaMedica_Datos.pdb

@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7BAA6109-E74D-40D2-B87E-D7EE9AD1B146}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CCHEN_FichaMedica_Web</RootNamespace>
+    <AssemblyName>CCHEN_FichaMedica_Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="bin\CCHEN_FichaMedica_Web.dll" />
+    <Content Include="bin\CCHEN_FichaMedica_Web.pdb" />
+    <Content Include="Cita\Cita.aspx" />
+    <Content Include="css\a11y-contrast.css" />
+    <Content Include="css\a11y-fontsize.css" />
+    <Content Include="css\a11y-toolbar.css" />
+    <Content Include="css\a11y.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\fonts\a11y-toolbar.svg" />
+    <Content Include="css\fonts\gobcl_bold-webfont.svg" />
+    <Content Include="css\fonts\gobcl_regular-webfont.svg" />
+    <Content Include="css\glyphicons-halflings-regular.svg" />
+    <Content Include="css\jquery-ui-1.8.16.custom.css" />
+    <Content Include="css\jquery-ui-1.8.9.custom.css" />
+    <Content Include="css\menu.css" />
+    <Content Include="css\reset.css" />
+    <Content Include="css\sistema.css" />
+    <Content Include="css\Site.css" />
+    <Content Include="css\smooth_scroll.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\style_new.css" />
+    <Content Include="fonts\a11y-toolbar.svg" />
+    <Content Include="fonts\font - copia\font - copia\a11y-toolbar.svg" />
+    <Content Include="fonts\gobcl_bold-webfont.svg" />
+    <Content Include="fonts\gobcl_regular-webfont.svg" />
+    <Content Include="Home.aspx" />
+    <Content Include="images\1col.png" />
+    <Content Include="images\2cl.png" />
+    <Content Include="images\2cr.png" />
+    <Content Include="images\archive-thumbnail-placeholder.gif" />
+    <Content Include="images\background-header.jpg" />
+    <Content Include="images\bg-alternativo.jpg" />
+    <Content Include="images\bg-alternativo2.jpg" />
+    <Content Include="images\bg-alternativo3.jpg" />
+    <Content Include="images\bg-footer.jpg" />
+    <Content Include="images\bg-head03.jpg" />
+    <Content Include="images\btn_DS49105.png" />
+    <Content Include="images\btn_snatds1.png" />
+    <Content Include="images\btn_snatds12.png" />
+    <Content Include="images\btn_snatds13.png" />
+    <Content Include="images\btn_snatds14.png" />
+    <Content Include="images\btn_snatds49.png" />
+    <Content Include="images\btn_snatds492.png" />
+    <Content Include="images\btn_snatds493.png" />
+    <Content Include="images\btn_snatds494.png" />
+    <Content Include="images\btn_snatigt.png" />
+    <Content Include="images\btn_snatiii.png" />
+    <Content Include="images\btn_snatiii2.png" />
+    <Content Include="images\btn_snatiii3.png" />
+    <Content Include="images\btn_snatiii4.png" />
+    <Content Include="images\cat-contacto-imag.jpg" />
+    <Content Include="images\cat-documentacion-imag.jpg" />
+    <Content Include="images\cat-urbanismo-imag.jpg" />
+    <Content Include="images\cat-vivienda-imag.jpg" />
+    <Content Include="images\developer-icono.png" />
+    <Content Include="images\f-icon.jpg" />
+    <Content Include="images\glyphicons-halflings-white.png" />
+    <Content Include="images\header-contacto.jpg" />
+    <Content Include="images\header-documentacion.jpg" />
+    <Content Include="images\header-online.jpg" />
+    <Content Include="images\header-urbanismo.jpg" />
+    <Content Include="images\header-vivienda.jpg" />
+    <Content Include="images\icono-creditos-gray.png" />
+    <Content Include="images\icon_top.png" />
+    <Content Include="images\idea-icono.png" />
+    <Content Include="images\iframe.jpg" />
+    <Content Include="images\letter-imgggg.png" />
+    <Content Include="images\li-bullet.png" />
+    <Content Include="images\line-gob.jpg" />
+    <Content Include="images\line-head-title.jpg" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\logo-admin-minvu.jpg" />
+    <Content Include="images\minvu-logo-footer.jpg" />
+    <Content Include="images\minvu-logo.jpg" />
+    <Content Include="images\pattern-form02.jpg" />
+    <Content Include="images\png\favicon.ico" />
+    <Content Include="images\postula-en-linea-imag.jpg" />
+    <Content Include="images\qa-icono.png" />
+    <Content Include="images\SNAT.png" />
+    <Content Include="images\SNAT2.png" />
+    <Content Include="images\SNAT3.png" />
+    <Content Include="images\SNAT4.png" />
+    <Content Include="images\SNAT5.png" />
+    <Content Include="images\t-icon.png" />
+    <Content Include="images\transparente.png" />
+    <Content Include="images\usuarios-icono.png" />
+    <Content Include="Login.aspx" />
+    <Content Include="obj\Debug\CCHEN_FichaMedica_Web.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\CCHEN_FichaMedica_Web.dll" />
+    <Content Include="obj\Debug\CCHEN_FichaMedica_Web.pdb" />
+    <Content Include="RegistroClinico\NuevoPaciente.aspx" />
+    <Content Include="RegistroClinico\Paciente.aspx" />
+    <Content Include="RegistroClinico\RegistroClinico.aspx" />
+    <Content Include="Salir.aspx" />
+    <Content Include="SesionExpirada.aspx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="_base\js\a11y.js" />
+    <Content Include="_base\js\backstretch.js" />
+    <Content Include="_base\js\bootstrap.js" />
+    <Content Include="_base\js\css3-mediaqueries.js" />
+    <Content Include="_base\js\html5.js" />
+    <Content Include="_base\js\html5shiv.js" />
+    <Content Include="_base\js\jquery.min.js" />
+    <Content Include="_base\js\jquery.scrollto.min.js" />
+    <Content Include="_base\js\modernizr.js" />
+    <Content Include="_base\js\respond.min.js" />
+    <Content Include="_base\js\smooth_scroll.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cita\Cita.aspx.cs">
+      <DependentUpon>Cita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cita\Cita.aspx.designer.cs">
+      <DependentUpon>Cita.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistroClinico\NuevoPaciente.aspx.cs">
+      <DependentUpon>NuevoPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroClinico\NuevoPaciente.aspx.designer.cs">
+      <DependentUpon>NuevoPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroClinico\Paciente.aspx.cs">
+      <DependentUpon>Paciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroClinico\Paciente.aspx.designer.cs">
+      <DependentUpon>Paciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroClinico\RegistroClinico.aspx.cs">
+      <DependentUpon>RegistroClinico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroClinico\RegistroClinico.aspx.designer.cs">
+      <DependentUpon>RegistroClinico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Salir.aspx.cs">
+      <DependentUpon>Salir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Salir.aspx.designer.cs">
+      <DependentUpon>Salir.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SesionExpirada.aspx.cs">
+      <DependentUpon>SesionExpirada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SesionExpirada.aspx.designer.cs">
+      <DependentUpon>SesionExpirada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Upload\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CCHEN_FichaMedica_Negocio\CCHEN_FichaMedica_Negocio.csproj">
+      <Project>{37ECABD6-5A68-4395-9BCB-963C7121C043}</Project>
+      <Name>CCHEN_FichaMedica_Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="css\fonts\a11y-toolbar.eot" />
+    <None Include="css\fonts\a11y-toolbar.ttf" />
+    <None Include="css\fonts\a11y-toolbar.woff" />
+    <None Include="css\fonts\gobcl_bold-webfont.eot" />
+    <None Include="css\fonts\gobcl_bold-webfont.ttf" />
+    <None Include="css\fonts\gobcl_bold-webfont.woff" />
+    <None Include="css\fonts\gobcl_regular-webfont.eot" />
+    <None Include="css\fonts\gobcl_regular-webfont.ttf" />
+    <None Include="css\fonts\gobcl_regular-webfont.woff" />
+    <None Include="css\glyphicons-halflings-regular.eot" />
+    <None Include="css\glyphicons-halflings-regular.ttf" />
+    <None Include="css\glyphicons-halflings-regular.woff" />
+    <None Include="fonts\a11y-toolbar.eot" />
+    <None Include="fonts\a11y-toolbar.ttf" />
+    <None Include="fonts\a11y-toolbar.woff" />
+    <Content Include="fonts\font - copia.zip" />
+    <None Include="fonts\font - copia\font - copia\a11y-toolbar.eot" />
+    <None Include="fonts\font - copia\font - copia\a11y-toolbar.ttf" />
+    <None Include="fonts\font - copia\font - copia\a11y-toolbar.woff" />
+    <None Include="fonts\gobcl_bold-webfont.eot" />
+    <None Include="fonts\gobcl_bold-webfont.ttf" />
+    <None Include="fonts\gobcl_bold-webfont.woff" />
+    <None Include="fonts\gobcl_regular-webfont.eot" />
+    <None Include="fonts\gobcl_regular-webfont.ttf" />
+    <None Include="fonts\gobcl_regular-webfont.woff" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53044</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

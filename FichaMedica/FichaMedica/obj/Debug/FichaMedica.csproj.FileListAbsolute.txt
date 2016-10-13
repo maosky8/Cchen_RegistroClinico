@@ -1,0 +1,4 @@
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\FichaMedica\bin\FichaMedica.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\FichaMedica\bin\FichaMedica.pdb
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\FichaMedica\obj\Debug\FichaMedica.dll
+C:\Omar - CCHEN\CCHEN\20160802 - Ficha médica\Códigos Ficha Médica\Main_Ficha_Médica\FichaMedica\FichaMedica\obj\Debug\FichaMedica.pdb
