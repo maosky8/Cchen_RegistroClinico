@@ -6,7 +6,7 @@
 * Objetivo                      :  Retorna todos los archivos historicos por paciente
 [RC_SP_con_registrohistorico] 16626344,37
 **********************************************************************************************/    
-alter PROCEDURE [dbo].[RC_SP_con_registrohistorico]     
+create PROCEDURE [dbo].[RC_SP_con_registrohistorico]     
 @RUT int = NULL,
 @ID int = NULL    
 AS  

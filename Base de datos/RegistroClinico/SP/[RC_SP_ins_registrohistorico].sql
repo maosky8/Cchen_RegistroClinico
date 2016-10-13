@@ -6,7 +6,7 @@
 * Objetivo                      :  Inserta archivo por paciente
 [RC_SP_ins_registrohistorico] 16626344, 'Radiografía Pie', '.jpg', '10kb', '/upload/radiografia pie.jpg'
 **********************************************************************************************/    
-alter PROCEDURE [dbo].[RC_SP_ins_registrohistorico]     
+create PROCEDURE [dbo].[RC_SP_ins_registrohistorico]     
 @RUT int,
 @NOMBRE varchar(50),
 @EXTENSION varchar(50),

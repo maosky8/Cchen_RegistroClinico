@@ -421,7 +421,7 @@ namespace CCHEN_FichaMedica_Web.Cita
             // Bind the data to the control.
             Lista.DataBind();
 
-            if (rut != null)
+            if (rut != null && rut != 1)
             {
                 ListItem selectedListItem = Lista.Items.FindByValue(rut.ToString());
 
