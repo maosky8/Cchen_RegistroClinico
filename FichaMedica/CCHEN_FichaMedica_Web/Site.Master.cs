@@ -37,6 +37,7 @@ namespace CCHEN_FichaMedica_Web
             {
                 Session["Rol_id"] = rol.Tables[0].Rows[0][0].ToString();
                 Session["Rol_Nombre"] = rol.Tables[0].Rows[0][1].ToString();
+                Session["RUT_Sesion"] = rol.Tables[0].Rows[0][2].ToString();
                 lblRol.Text = Session["Rol_Nombre"].ToString();
             }
 

@@ -126,14 +126,12 @@
     <div class="panel-heading"><h3 class="panel-title">Detalle del Paciente</h3></div>
     <div class="panel-body">
 
-    <ul class="nav nav-tabs nav-justified" id="myTabs">
+<ul class="nav nav-tabs nav-justified" id="myTabs">
   <li id="li_historial_atenciones"><a href="historial_atenciones" data-toggle="tab" class="tablinks" onclick="openTabs(event, 'historial_atenciones')">Historial de Atenciones</a></li>
   <li id="li_licencias_operacionales"><a href="licencias_operacionales" data-toggle="tab" class="tablinks" onclick="openTabs(event, 'licencias_operacionales')">Licencias Operacionales</a></li>
   <li id="li_analisis_clinicos"><a href="analisis_clinicos" data-toggle="tab" class="tablinks" onclick="openTabs(event, 'analisis_clinicos')">Análisis Clínicos</a></li>
   <li id="li_registros_historicos"><a href="registros_historicos" data-toggle="tab" class="tablinks" onclick="openTabs(event, 'registros_historicos')">Registros Históricos</a></li>
 </ul>
-
-
 
 <div id="historial_atenciones" class="tabcontent"  >
     <div class="alert alert-warning alert-dismissable" id="div_alert_historial_atenciones_error" runat="server" visible="false">
@@ -182,15 +180,124 @@
 
         </div>
 </div>
-</div>
 
-<div id="licencias_operacionales" class="tabcontent" style="display:none"  >
+<div id="licencias_operacionales" class="tabcontent" <%--style="display:none"--%>  >
     <div class="alert alert-warning alert-dismissable" id="div_alert_licencias_operacionales_error" runat="server" visible="false">
             <strong>¡Lástima!</strong> Tu Rol no tiene acceso a esta información. </div>
+
     <div class="panel-body" id="div_licencias_operacionales" runat="server">
-        asdasd
+        
+    <div class="alert alert-warning alert-dismissable" id="div_alert_licenciaOperacional_vacio" runat="server" visible="false">
+            <strong>¡Lástima!</strong> El paciente no tiene licencias que mostrar. </div>
+
+    <div class="panel-body" id="div5" runat="server">
+        
+                <div id="div_resultado_licenciaoperacional" runat="server" visible="false">
+            <asp:GridView   CssClass="table table-striped" 
+                    ID="gvLicenciaOperacional" 
+                    runat="server"
+                    AutoGenerateColumns="False" 
+                    OnRowCommand="gvLicenciaOperacional_RowCommand" 
+                    DataKeyNames="IdLicenciaOperacional" 
+                    Width="100%" onselectedindexchanged="gvLicenciaOperacional_SelectedIndexChanged">
+                            <Columns>
+                                <asp:BoundField DataField="IdLicenciaOperacional" HeaderText="ID LO" Visible="false" ItemStyle-Width="10%"></asp:BoundField>
+                                <asp:TemplateField HeaderText="Licencia Operacional" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lnk_LicenciaOperacional" runat="server" Text='<%#Eval("IDNombreLicenciaOperacional")%>' OnClientClick="GenerarControles(this);"
+                                            CommandName="Seleccionar" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"IDLicenciaOperacional") %>'></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="NOMBREMEDICO" HeaderText="Nombre Médico" ItemStyle-Width="25%"></asp:BoundField>
+                                <asp:BoundField DataField="FECHAREGISTRO" HeaderText="Fecha de Registro" ItemStyle-Width="15%"></asp:BoundField>
+                                <asp:BoundField DataField="FECHAINICIO" HeaderText="Fecha de Inicio" ItemStyle-Width="15%"></asp:BoundField>
+                                <asp:BoundField DataField="FECHAFIN" HeaderText="Fecha de Fin" ItemStyle-Width="15%"></asp:BoundField>
+                                <asp:BoundField DataField="ESTADOLICENCIAOPERACIONAL" HeaderText="Estado" ItemStyle-Width="10%"></asp:BoundField>
+
+                            </Columns>
+                        </asp:GridView>
+            </div>
+            <div class="col-sm-12" align="center">
+            <asp:Button ID="btn_nueva_licenciaoperacional" class="btn btn-primary" runat="server" onclick="btn_nueva_licenciaoperacional_clic" Text="Nueva Licencia Operacional"  />
+            </div>
+        <div>&nbsp;</div>
+        <div id="div_nueva_licenciaoperacional" runat="server" visible="false">
+            <asp:GridView   CssClass="table table-striped" 
+                    ID="gvNuevaLicenciaOperacional" 
+                    runat="server"
+                    AutoGenerateColumns="False" 
+                    OnRowCommand="gvNuevaLicenciaOperacional_RowCommand" 
+                    DataKeyNames="AptitudExamen" 
+                    Width="100%" onselectedindexchanged="gvNuevaLicenciaOperacional_SelectedIndexChanged">
+                            <Columns>
+                                <asp:BoundField DataField="ID_ExamenFisico" HeaderText="ID EF" Visible="false" ItemStyle-Width="10%"></asp:BoundField>
+                                <asp:BoundField DataField="AptitudExamen" HeaderText="Condición" ItemStyle-Width="40%"></asp:BoundField>
+                                <asp:TemplateField HeaderText="Apto" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                    <ItemTemplate>
+                                        <asp:RadioButton ID="rb_apto" runat="server" GroupName="aptitud" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Con Restricciones" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                    <ItemTemplate>
+                                        <asp:RadioButton ID="rb_rest" runat="server" GroupName="aptitud" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="No Apto" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                    <ItemTemplate>
+                                        <asp:RadioButton ID="rb_noapto" runat="server" GroupName="aptitud" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+            </div>
+        <div>&nbsp;</div>
+           <div id="div_detalle_licenciaoperacional" runat="server" visible="false">
+           <div class="panel-heading"><h3 class="panel-title"><asp:Label ID="lbl_detalle_licencia_operacional" runat="server" Text=""></asp:Label></h3></div>
+            <asp:GridView   CssClass="table table-striped" 
+                    ID="gvDetalleLicenciaOperacional" 
+                    runat="server"
+                    AutoGenerateColumns="False" 
+                    OnRowCommand="gvDetalleLicenciaOperacional_RowCommand" 
+                    OnRowDataBound ="gvDetalleLicenciaOperacional_RowDataBound" 
+                    DataKeyNames="NombreExamen" 
+                    Width="100%" onselectedindexchanged="gvDetalleLicenciaOperacional_SelectedIndexChanged">
+                            <Columns>
+                                <asp:BoundField DataField="ID_LicenciaOperacional_ExamenFisico" HeaderText="ID LOEF" Visible="false" ItemStyle-Width="10%"></asp:BoundField>
+                                <asp:BoundField DataField="ID_ExamenFisico" HeaderText="ID EF" Visible="false" ItemStyle-Width="10%"></asp:BoundField>
+                                <asp:BoundField DataField="ID_Aptitud" HeaderText="ID AP" Visible="false" ItemStyle-Width="10%"></asp:BoundField>
+                                <asp:BoundField DataField="NombreExamen" HeaderText="Condición" ItemStyle-Width="40%"></asp:BoundField>
+                                <asp:TemplateField HeaderText="Apto" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                    <ItemTemplate>
+                                        <asp:RadioButton ID="rb_d_apto" runat="server" GroupName="aptitud" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Con Restricciones" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                    <ItemTemplate>
+                                        <asp:RadioButton ID="rb_d_rest" runat="server" GroupName="aptitud" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="No Apto" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                    <ItemTemplate>
+                                        <asp:RadioButton ID="rb_d_noapto" runat="server" GroupName="aptitud" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+            <div class="col-sm-3"><label for="inputName" class="control-label">Apreciación del Médico Autorizado :</label></div>
+            <div class="col-sm-3"><asp:TextBox id="txt_apreciacion_detalle" style="Z-INDEX: 501; OVERFLOW: hidden;  " runat="server" TextMode="MultiLine" class="form-control"></asp:TextBox></div>
+             
+            <div class="col-sm-3"><label for="inputName" class="control-label">Dias de Licencia :</label></div>
+            <div class="col-sm-3"><asp:TextBox id="txt_dias_detalle" runat="server" class="form-control"></asp:TextBox></div>
+               <div>&nbsp;</div><div>&nbsp;</div>
+            <div class="col-sm-12" align="center">
+            <asp:Button ID="btn_modificar_licenciaoperacional" class="btn btn-primary" runat="server" onclick="btn_modificar_licenciaoperacional_clic" Text="Modificar Licencia Operacional"  />
+            </div>
+            </div>
+        
+
         </div>
 </div>
+    </div>
 
 <div id="analisis_clinicos" class="tabcontent" style="display:none"  >
     <div class="alert alert-warning alert-dismissable" id="div_alert_analisis_clinicos_error" runat="server" visible="false">
@@ -264,7 +371,10 @@
 </div>
 
     </div>
-    </div>
+    
+    
+    </div></div>
+    
     
 
 <div style="display: none">  
@@ -277,6 +387,7 @@
     <Triggers>
         <asp:PostBackTrigger ControlID="btn_subir_registrohistorico" />
         <asp:AsyncPostBackTrigger ControlID="gvRegistroHistorico" EventName="RowCommand" />
+        <asp:AsyncPostBackTrigger ControlID="gvDetalleLicenciaOperacional" EventName="RowCommand" />
     </Triggers>
 </asp:UpdatePanel>
 </form>  

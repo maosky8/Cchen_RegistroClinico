@@ -19,6 +19,7 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
 
         #region variables
         private static int _ArchivoSeleccionado = 0;
+        private static int _LicenciaSeleccionada = 0;
         public DataTable TableRegistroHistorico
         {
             get
@@ -33,6 +34,35 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
                 ViewState["TableRegistroHistorico"] = value;
             }
         }
+
+        public DataTable TableLicenciaOperacional
+        {
+            get
+            {
+                if (ViewState["TableLicenciaOperacional"] != null)
+                    return (DataTable)ViewState["TableLicenciaOperacional"];
+                else
+                    return null;
+            }
+            set
+            {
+                ViewState["TableLicenciaOperacional"] = value;
+            }
+        }
+        public DataTable TableDetalleLicenciaOperacional
+        {
+            get
+            {
+                if (ViewState["TableDetalleLicenciaOperacional"] != null)
+                    return (DataTable)ViewState["TableDetalleLicenciaOperacional"];
+                else
+                    return null;
+            }
+            set
+            {
+                ViewState["TableLicenciaOperacional"] = value;
+            }
+        }
         //FileUpload SubirArchivos = new FileUpload();
         #endregion
 
@@ -44,6 +74,7 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
                     LLena_Paciente(Convert.ToInt32(Session["RutPaciente"].ToString()));
                     ControlDisplayDiv();
                     Buscar_RegistroHistorico(Convert.ToInt32(Request.QueryString["rut"].ToString()));
+                    Buscar_LicenciaOperacional( Convert.ToInt32(Request.QueryString["rut"].ToString()) , Convert.ToInt32(Session["RUT_Sesion"].ToString()) );
                 }
             }
 
@@ -215,6 +246,25 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             }
         }
 
+        protected void Buscar_LicenciaOperacional(int rutpaciente, int rutmedico)
+        {
+            IList<CCHEN_FichaMedica_Negocio.Custom.ResultadoLicenciaOperacional> Lista = CCHEN_FichaMedica_Negocio.RegistroClinico.ObtenerLicenciaOperacional(rutpaciente, rutmedico);
+
+            if (Lista == null || Lista.Count == 0)
+            {
+                ControlAlert();
+                div_alert_licenciaOperacional_vacio.Visible = true;
+            }
+
+            else
+            {
+                TableLicenciaOperacional = ToDataTable(Lista.ToList());
+                gvLicenciaOperacional.DataSource = Lista.OrderBy(p => p.IdNombreLicenciaOperacional).ThenBy(p => p.NombreMedico).ToList();
+                gvLicenciaOperacional.DataBind();
+                div_resultado_licenciaoperacional.Visible = true;
+            }
+        }
+
         public static DataTable ToDataTable<T>(List<T> items)
         {
             DataTable dataTable = new DataTable(typeof(T).Name);
@@ -263,7 +313,77 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             }
         }
 
+        protected void gvLicenciaOperacional_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                switch (e.CommandName)
+                {
+                    case "Seleccionar":
+                        _LicenciaSeleccionada = Convert.ToInt32(e.CommandArgument);
+                        if (_LicenciaSeleccionada == 0)
+                        {
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Mensaje", "alert('La Licencia Operacional que ha seleccionado, no contiene información.')", true);
+                            break;
+                        }
+                        //variable para la persistencia
+                        hidTAB.Value = "licencias_operacionales";
+                        CargarDetalleLicenciaOperacional(_LicenciaSeleccionada);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Mensaje", "alert('Ha ocurrido un error, favor contacte al administrador del sistema.')", true);
+            }
+        }
+
+        protected void gvNuevaLicenciaOperacional_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                switch (e.CommandName)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Mensaje", "alert('Ha ocurrido un error, favor contacte al administrador del sistema.')", true);
+            }
+        }
+
+        protected void gvDetalleLicenciaOperacional_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                switch (e.CommandName)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Mensaje", "alert('Ha ocurrido un error, favor contacte al administrador del sistema.')", true);
+            }
+        }
+
         protected void gvRegistroHistorico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gvLicenciaOperacional_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gvDetalleLicenciaOperacional_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gvNuevaLicenciaOperacional_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -294,6 +414,59 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             _objFiles.Dispose();
             _objReader.Close();
             mem.Close();
+        }
+
+        protected void btn_nueva_licenciaoperacional_clic(object sender, EventArgs e)
+        {
+
+        }
+
+        protected  void btn_modificar_licenciaoperacional_clic(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CargarDetalleLicenciaOperacional(int id)
+        {
+            DataSet LicOpe = new DataSet();
+            LicOpe = CCHEN_FichaMedica_Negocio.RegistroClinico.ObtenerDetalleLicenciaOperacional(id);
+
+            div_detalle_licenciaoperacional.Visible = true;
+            div_nueva_licenciaoperacional.Visible = false;
+            
+            txt_apreciacion_detalle.Text = LicOpe.Tables[0].Rows[0][7].ToString();
+            txt_dias_detalle.Text = LicOpe.Tables[0].Rows[0][8].ToString();
+            lbl_detalle_licencia_operacional.Text = "Detalle Licencia Operacional : "+LicOpe.Tables[0].Rows[0][1].ToString();
+
+            IList<CCHEN_FichaMedica_Negocio.Custom.DatosDetalleExamen> Lista = CCHEN_FichaMedica_Negocio.RegistroClinico.ObtenerDetalleExamen(id);
+
+            if (Lista == null || Lista.Count == 0)
+            {
+                ControlAlert();
+                div_alert_licenciaOperacional_vacio.Visible = true;
+            }
+
+            else
+            {
+                TableDetalleLicenciaOperacional = ToDataTable(Lista.ToList());
+                gvDetalleLicenciaOperacional.DataSource = Lista.OrderBy(p => p.IDLicencia).ThenBy(p => p.IDExamen).ToList();
+                gvDetalleLicenciaOperacional.DataBind();
+            }
+
+        }
+
+        protected void gvDetalleLicenciaOperacional_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int aptitud = (int)System.Web.UI.DataBinder.Eval(e.Row.DataItem, "IDExamen");
+                var apto = e.Row.FindControl("rb_d_apto") as RadioButton;
+                var rest = e.Row.FindControl("rb_d_rest") as RadioButton;
+                var noapto = e.Row.FindControl("rb_d_noapto") as RadioButton;
+                if (aptitud == 1) apto.Checked = true;
+                if (aptitud == 2) rest.Checked = true;
+                if (aptitud == 3) noapto.Checked = true;
+            }
         }
     }
 }

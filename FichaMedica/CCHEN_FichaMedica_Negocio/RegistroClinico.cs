@@ -130,6 +130,77 @@ namespace CCHEN_FichaMedica_Negocio
             return list;
         }
 
+        public static IList<Custom.ResultadoLicenciaOperacional> ObtenerLicenciaOperacional(int rutpaciente, int rutmedico)
+        {
+            string procedimiento = "RC_SP_con_LicenciaOperacional";
+
+            SqlParameter[] dbParams = new SqlParameter[2];
+
+            dbParams[0] = new SqlParameter("@RUTPACIENTE", SqlDbType.Int);
+            dbParams[0].Value = rutpaciente;
+            dbParams[1] = new SqlParameter("@RUTMEDICO", SqlDbType.Int);
+            dbParams[1].Value = rutmedico;
+
+            DataSet ds = CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+
+            var list = (ds.Tables[0].AsEnumerable().Select(
+                df =>
+                new Custom.ResultadoLicenciaOperacional
+                {
+                    IdLicenciaOperacional = Convert.ToInt32(df[0].ToString()),
+                    IdNombreLicenciaOperacional = df[1].ToString(),
+                    NombreMedico = df[2].ToString(),
+                    FechaRegistro = df[3].ToString(),
+                    FechaInicio = df[4].ToString(),
+                    FechaFin = df[5].ToString(),
+                    EstadoLicenciaOperacional = df[6].ToString(),
+                    Apreciacion = df[7].ToString(),
+                    Dias = df[8].ToString()
+
+                })).ToList();
+
+            return list;
+        }
+
+        public static DataSet ObtenerDetalleLicenciaOperacional(int idlicenciaoperacional)
+        {
+            string procedimiento = "RC_SP_con_detalle_licenciaoperacional";
+
+            SqlParameter[] dbParams = new SqlParameter[1];
+
+            dbParams[0] = new SqlParameter("@ID", SqlDbType.Int);
+            dbParams[0].Value = idlicenciaoperacional;
+
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+        }
+
+        public static IList<Custom.DatosDetalleExamen> ObtenerDetalleExamen(int idlicenciaoperacional)
+        {
+            string procedimiento = "RC_SP_con_detalle_examenfisico";
+
+            SqlParameter[] dbParams = new SqlParameter[1];
+
+            dbParams[0] = new SqlParameter("@ID", SqlDbType.Int);
+            dbParams[0].Value = idlicenciaoperacional;
+
+
+            DataSet ds = CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+
+            var list = (ds.Tables[0].AsEnumerable().Select(
+                df =>
+                new Custom.DatosDetalleExamen
+                {
+                    IDLicencia = Convert.ToInt32(df[0].ToString()),
+                    IDExamen = Convert.ToInt32(df[1].ToString()),
+                    IDAptitud = Convert.ToInt32(df[2].ToString()),
+                    NombreExamen = df[3].ToString(),
+                    NombreAptitud = df[4].ToString()
+
+                })).ToList();
+
+            return list;
+        }
+
         public static DataSet NuevoPaciente(Custom.DatosNuevoPaciente dto)
         {
             string procedimiento = "RC_SP_ins_Paciente";
