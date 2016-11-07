@@ -40,4 +40,16 @@ VALUES
     3 -- AU_ROL_id - int
 )
 
-SELECT * FROM AU_ROL
+SELECT * FROM au_rol
+
+
+INSERT INTO dbo.AU_USUARIO_ROL
+(
+    AU_USUARIO_rut,
+    AU_ROL_id
+)
+VALUES
+(
+    16626344, -- AU_USUARIO_rut - int
+    5 -- AU_ROL_id - int
+)

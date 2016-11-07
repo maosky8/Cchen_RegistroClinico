@@ -52,9 +52,12 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
                 objeto.FonoContacto = txt_np_fonocontacto.Text.ToString();
                 objeto.FonoEmergencia = txt_np_fonoemergencia.Text.ToString();
                 objeto.ContactoEmergencia = txt_np_contactoemergencia.Text.ToString();
-
-                DataSet Cita = new DataSet();
-                Cita = CCHEN_FichaMedica_Negocio.RegistroClinico.NuevoPaciente(objeto);
+                //grabar paciente
+                DataSet Paciente = new DataSet();
+                Paciente = CCHEN_FichaMedica_Negocio.RegistroClinico.NuevoPaciente(objeto);
+                //grabar registroclinico
+                DataSet RegistroClinico = new DataSet();
+                RegistroClinico = CCHEN_FichaMedica_Negocio.RegistroClinico.NuevoRegistroClinico(objeto.RutPaciente, Convert.ToInt32(Session["RUT_Sesion"].ToString()));
 
                 BloquearFormulario();
                 //ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Mensaje", "alert('Paciente creado exitosamente.')", true);

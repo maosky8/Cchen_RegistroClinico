@@ -44,12 +44,12 @@ namespace CCHEN_FichaMedica_Web
             string menuCita = "RC_Menu_Cita";
             DataSet tareaCita = new DataSet();
             tareaCita = CCHEN_FichaMedica_Negocio.Menu.ConsultaTarea(Int32.Parse(Session["Rol_id"].ToString()), menuCita);
-            if (tareaCita.Tables[0].Rows[0][0].ToString() != "0") { idlicita.Visible = true; }
+            if (tareaCita.Tables[0].Rows[0][0].ToString() != "0") { idlicita.Visible = true; Session["RC_Menu_Cita"] = 1; }
 
             string menuRegCli = "RC_Menu_RegistroClinico";
             DataSet tareaRegCli = new DataSet();
             tareaRegCli = CCHEN_FichaMedica_Negocio.Menu.ConsultaTarea(Int32.Parse(Session["Rol_id"].ToString()), menuRegCli);
-            if (tareaRegCli.Tables[0].Rows[0].ToString() != "0") { idliregcli.Visible = true; }
+            if (tareaRegCli.Tables[0].Rows[0].ToString() != "0") { idliregcli.Visible = true; Session["RC_Menu_RegistroClinico"] = 1; }
 
             Session["Menu"] = 1;
 

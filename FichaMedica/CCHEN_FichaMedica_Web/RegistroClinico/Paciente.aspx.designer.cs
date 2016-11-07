@@ -202,15 +202,6 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.TextBox lbl_contacto_emergencia;
         
         /// <summary>
-        /// Control btn_modificar_paciente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_modificar_paciente;
-        
-        /// <summary>
         /// Control btn_volver.
         /// </summary>
         /// <remarks>
@@ -274,6 +265,33 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_licenciaOperacional_vacio;
         
         /// <summary>
+        /// Control div_alert_nuevalicope_ok.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_nuevalicope_ok;
+        
+        /// <summary>
+        /// Control div_alert_eliminarlicope_ok.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_eliminarlicope_ok;
+        
+        /// <summary>
+        /// Control div_alert_nuevalicope_error.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_nuevalicope_error;
+        
+        /// <summary>
         /// Control div5.
         /// </summary>
         /// <remarks>
@@ -319,6 +337,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_nueva_licenciaoperacional;
         
         /// <summary>
+        /// Control div_alert_examen_vacio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_examen_vacio;
+        
+        /// <summary>
         /// Control gvNuevaLicenciaOperacional.
         /// </summary>
         /// <remarks>
@@ -326,6 +353,69 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvNuevaLicenciaOperacional;
+        
+        /// <summary>
+        /// Control txt_fechainicio_nueva_lo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_fechainicio_nueva_lo;
+        
+        /// <summary>
+        /// Control txt_fechatermino_nueva_lo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_fechatermino_nueva_lo;
+        
+        /// <summary>
+        /// Control txt_dias_nueva_lo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_dias_nueva_lo;
+        
+        /// <summary>
+        /// Control DropDownList_EstadoLicencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_EstadoLicencia;
+        
+        /// <summary>
+        /// Control txt_apreciacion_nueva_lo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_apreciacion_nueva_lo;
+        
+        /// <summary>
+        /// Control btn_grabarnueva_licenciaoperacional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_grabarnueva_licenciaoperacional;
+        
+        /// <summary>
+        /// Control btn_volvernueva_licenciaoperacional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_volvernueva_licenciaoperacional;
         
         /// <summary>
         /// Control div_detalle_licenciaoperacional.
@@ -355,13 +445,22 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.GridView gvDetalleLicenciaOperacional;
         
         /// <summary>
-        /// Control txt_apreciacion_detalle.
+        /// Control txt_fechaini_detalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_apreciacion_detalle;
+        protected global::System.Web.UI.WebControls.TextBox txt_fechaini_detalle;
+        
+        /// <summary>
+        /// Control txt_fechafin_detalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_fechafin_detalle;
         
         /// <summary>
         /// Control txt_dias_detalle.
@@ -373,6 +472,24 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.TextBox txt_dias_detalle;
         
         /// <summary>
+        /// Control DropDownList_estadolicencia_detalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_estadolicencia_detalle;
+        
+        /// <summary>
+        /// Control txt_apreciacion_detalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_apreciacion_detalle;
+        
+        /// <summary>
         /// Control btn_modificar_licenciaoperacional.
         /// </summary>
         /// <remarks>
@@ -380,6 +497,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_modificar_licenciaoperacional;
+        
+        /// <summary>
+        /// Control btn_eliminar_licenciaoperacional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_eliminar_licenciaoperacional;
         
         /// <summary>
         /// Control div_alert_analisis_clinicos_error.

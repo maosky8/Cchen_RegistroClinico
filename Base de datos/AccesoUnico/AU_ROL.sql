@@ -70,3 +70,20 @@ VALUES
     1 -- AU_SISTEMA_id - smallint
 )
 
+INSERT INTO dbo.AU_ROL
+(
+    --AU_ROL_id - this column value is auto-generated
+    AU_ROL_nombre,
+    AU_ROL_vigencia,
+    AU_SISTEMA_id
+)
+VALUES
+(
+    -- AU_ROL_id - int
+    'TF_Administrador', -- AU_ROL_nombre - varchar
+    1, -- AU_ROL_vigencia - smallint
+    2 -- AU_SISTEMA_id - smallint
+)
+
+
+

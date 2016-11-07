@@ -61,6 +61,12 @@ namespace CCHEN_FichaMedica_Negocio
             return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, null);
         }
 
+        public static DataSet EstadoLicenciaOperacional()
+        {
+            string procedimiento = "RC_SP_con_estadolicenciaoperacional";
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, null);
+        }
+
         public static DataSet Prevision()
         {
             string procedimiento = "RC_SP_con_prevision";
@@ -174,6 +180,23 @@ namespace CCHEN_FichaMedica_Negocio
             return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
         }
 
+        public static IList<Custom.DatosNuevoExamen> ObtenerNuevoExamenFisico()
+        {
+            string procedimiento = "RC_SP_con_nuevo_examenfisico";
+            DataSet ds = CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, null);
+
+            var list = (ds.Tables[0].AsEnumerable().Select(
+                df =>
+                new Custom.DatosNuevoExamen
+                {
+                    idExamen = Convert.ToInt32(df[0].ToString()),
+                    NombreExamen = df[1].ToString()
+
+                })).ToList();
+
+            return list;
+        }
+
         public static IList<Custom.DatosDetalleExamen> ObtenerDetalleExamen(int idlicenciaoperacional)
         {
             string procedimiento = "RC_SP_con_detalle_examenfisico";
@@ -264,6 +287,73 @@ namespace CCHEN_FichaMedica_Negocio
             dbParams[3].Value = dto.Tamano;
             dbParams[4] = new SqlParameter("@RUTA", SqlDbType.VarChar);
             dbParams[4].Value = dto.Ruta;
+
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+        }
+
+        public static DataSet NuevaLicenciaOperacional(Custom.DatosNuevaLicenciaOperacional dto)
+        {
+            string procedimiento = "RC_SP_ins_licenciaoperacional";
+
+            SqlParameter[] dbParams = new SqlParameter[7];
+
+            dbParams[0] = new SqlParameter("@REGISTROCLINICOID", SqlDbType.Int);
+            dbParams[0].Value = dto.RegistroClinicoID;
+            dbParams[1] = new SqlParameter("@ESTADO", SqlDbType.Int);
+            dbParams[1].Value = dto.EstadoLicenciaOperacional;
+            dbParams[2] = new SqlParameter("@DIAS", SqlDbType.Int);
+            dbParams[2].Value = dto.Dias;
+            dbParams[3] = new SqlParameter("@APRECIACION", SqlDbType.VarChar);
+            dbParams[3].Value = dto.Apreciacion;
+            dbParams[4] = new SqlParameter("@FECHAREGISTRO", SqlDbType.VarChar);
+            dbParams[4].Value = dto.FechaRegistro;
+            dbParams[5] = new SqlParameter("@FECHAINICIO", SqlDbType.VarChar);
+            dbParams[5].Value = dto.FechaInicio;
+            dbParams[6] = new SqlParameter("@FECHAFIN", SqlDbType.VarChar);
+            dbParams[6].Value = dto.FechaFin;
+
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+        }
+
+        public static DataSet NuevaLicOpeExamenFisico(Custom.DatosNuevaLicOpeExamenFisico dto)
+        {
+            string procedimiento = "RC_SP_ins_LicOpeExamenFisico";
+
+            SqlParameter[] dbParams = new SqlParameter[3];
+
+            dbParams[0] = new SqlParameter("@LICENCIAOPERACIONAL_id", SqlDbType.Int);
+            dbParams[0].Value = dto.idLicenciaOperacional;
+            dbParams[1] = new SqlParameter("@EXAMENFISICO_id", SqlDbType.Int);
+            dbParams[1].Value = dto.idExamen;
+            dbParams[2] = new SqlParameter("@APTITUDEXAMEN_id", SqlDbType.Int);
+            dbParams[2].Value = dto.idAptitud;
+
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+        }
+
+        public static DataSet NuevoRegistroClinico(int rutPaciente, int rutMedico)
+        {
+            string procedimiento = "RC_SP_ins_registroclinico";
+
+            SqlParameter[] dbParams = new SqlParameter[2];
+
+            dbParams[0] = new SqlParameter("@RUTPACIENTE", SqlDbType.Int);
+            dbParams[0].Value = rutPaciente;
+            dbParams[1] = new SqlParameter("@RUTMEDICO", SqlDbType.Int);
+            dbParams[1].Value = rutMedico;
+
+
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+        }
+
+        public static DataSet EliminarLicenciaOperacional(int idlicenciaoperacional)
+        {
+            string procedimiento = "RC_SP_del_licenciaoperacional";
+
+            SqlParameter[] dbParams = new SqlParameter[1];
+
+            dbParams[0] = new SqlParameter("@ID", SqlDbType.Int);
+            dbParams[0].Value = idlicenciaoperacional;
 
             return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
         }

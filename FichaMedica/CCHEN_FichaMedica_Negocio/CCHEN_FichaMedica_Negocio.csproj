@@ -46,7 +46,10 @@
     <Compile Include="Custom\DatosDetalleCita.cs" />
     <Compile Include="Custom\DatosDetalleExamen.cs" />
     <Compile Include="Custom\DatosNuevaCita.cs" />
+    <Compile Include="Custom\DatosNuevaLicenciaOperacional.cs" />
+    <Compile Include="Custom\DatosNuevaLicOpeExamenFisico.cs" />
     <Compile Include="Custom\DatosNuevoArchivo.cs" />
+    <Compile Include="Custom\DatosNuevoExamen.cs" />
     <Compile Include="Custom\DatosNuevoPaciente.cs" />
     <Compile Include="Custom\ResultadoLicenciaOperacional.cs" />
     <Compile Include="Custom\ResultadoBuscadorCita.cs" />

@@ -93,3 +93,8 @@ VALUES
     ,1
 )
 
+
+
+select * from AU_USUARIO
+update AU_USUARIO set au_usuario_mail = 'omar@isjom.com' 
+alter table AU_USUARIO add  AU_USUARIO_mail varchar(100)

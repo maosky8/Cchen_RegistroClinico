@@ -11,8 +11,14 @@ namespace CCHEN_FichaMedica_Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            
+            if (!IsPostBack)
+            {
+                if (Session["RC_Menu_RegistroClinico"] != null)
+                {
+                    if (Convert.ToInt32(Session["RC_Menu_RegistroClinico"].ToString()) == 1) { div_RC_Menu_RegistroClinico.Visible = true; }
+                    if (Convert.ToInt32(Session["RC_Menu_Cita"].ToString()) == 1) { div_RC_Menu_Cita.Visible = true; }
+                }
+            }
         }
     }
 }

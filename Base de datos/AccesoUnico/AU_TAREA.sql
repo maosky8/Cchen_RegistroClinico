@@ -26,3 +26,7 @@ INSERT INTO dbo.AU_TAREA VALUES ('RC_Ver_RegistroHistorico', 1, 1)
 INSERT INTO dbo.AU_TAREA VALUES ('RC_Accion_GrabarNuevoPaciente', 1, 1)
 
 
+
+INSERT INTO dbo.AU_TAREA VALUES ('TF_menu_solicitud', 1, 2)
+INSERT INTO dbo.AU_TAREA VALUES ('TF_menu_historial', 1, 2)
+
