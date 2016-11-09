@@ -357,6 +357,24 @@ namespace CCHEN_FichaMedica_Negocio
 
             return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
         }
+
+        public static DataSet ModificarLicenciaOperacional(int idlicenciaoperacional, int dias, int estado, string apreciacion)
+        {
+            string procedimiento = "RC_SP_upd_licenciaoperacional";
+
+            SqlParameter[] dbParams = new SqlParameter[4];
+
+            dbParams[0] = new SqlParameter("@ID", SqlDbType.Int);
+            dbParams[0].Value = idlicenciaoperacional;
+            dbParams[1] = new SqlParameter("@DIAS", SqlDbType.Int);
+            dbParams[1].Value = dias;
+            dbParams[2] = new SqlParameter("@ESTADO", SqlDbType.Int);
+            dbParams[2].Value = estado;
+            dbParams[3] = new SqlParameter("@APRECIACION", SqlDbType.VarChar);
+            dbParams[3].Value = apreciacion;
+
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+        }
     }
 
 }

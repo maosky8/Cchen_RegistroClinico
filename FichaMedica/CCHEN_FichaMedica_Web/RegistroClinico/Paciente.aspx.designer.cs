@@ -283,6 +283,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_eliminarlicope_ok;
         
         /// <summary>
+        /// Control div_alert_modificarlicope_ok.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_modificarlicope_ok;
+        
+        /// <summary>
         /// Control div_alert_nuevalicope_error.
         /// </summary>
         /// <remarks>

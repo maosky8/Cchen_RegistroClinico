@@ -84,7 +84,7 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             {
                 if (!IsPostBack)
                 {
-                Session["RutPaciente"] = Convert.ToInt32(Request.QueryString["rut"].ToString());
+                    Session["RutPaciente"] = Convert.ToInt32(Request.QueryString["rut"].ToString());
                     LLena_Paciente(Convert.ToInt32(Session["RutPaciente"].ToString()));
                     ControlDisplayDiv();
                     Buscar_RegistroHistorico(Convert.ToInt32(Request.QueryString["rut"].ToString()));
@@ -189,7 +189,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
 
         protected void btn_modificar_licenciaoperacional_clic(object sender, EventArgs e)
         {
+            DataSet ModLicOpe = new DataSet();
+            ModLicOpe = CCHEN_FichaMedica_Negocio.RegistroClinico.ModificarLicenciaOperacional(_LicenciaSeleccionada, Convert.ToInt32(txt_dias_detalle.Text.ToString()), Convert.ToInt32(DropDownList_estadolicencia_detalle.SelectedValue.ToString()), txt_apreciacion_detalle.Text.ToString());
 
+            ControlAlert();
+            Buscar_LicenciaOperacional(Convert.ToInt32(Request.QueryString["rut"].ToString()), Convert.ToInt32(Session["RUT_Sesion"].ToString()));
+            div_nueva_licenciaoperacional.Visible = false;
+            div_resultado_licenciaoperacional.Visible = true;
+            div_detalle_licenciaoperacional.Visible = false;
+            div_alert_modificarlicope_ok.Visible = true;
         }
 
         protected void btn_eliminar_licenciaoperacional_clic(object sender, EventArgs e)
@@ -342,6 +350,7 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             div_alert_nuevalicope_ok.Visible = false;
             div_alert_nuevalicope_error.Visible = false;
             div_alert_eliminarlicope_ok.Visible = false;
+            div_alert_modificarlicope_ok.Visible = false;
         }
 
 
@@ -517,6 +526,7 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
 
         protected void CargarDetalleLicenciaOperacional(int id)
         {
+            ControlAlert();
             DataSet LicOpe = new DataSet();
             LicOpe = CCHEN_FichaMedica_Negocio.RegistroClinico.ObtenerDetalleLicenciaOperacional(id);
 
@@ -546,6 +556,22 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
                 gvDetalleLicenciaOperacional.DataBind();
             }
 
+            if(Convert.ToInt32(LicOpe.Tables[0].Rows[0][9].ToString()) == 3)
+            {
+                txt_dias_detalle.Attributes["disabled"] = "disabled";
+                DropDownList_estadolicencia_detalle.Attributes["disabled"] = "disabled";
+                txt_apreciacion_detalle.Attributes["disabled"] = "disabled";
+                btn_modificar_licenciaoperacional.Visible = false;
+                btn_eliminar_licenciaoperacional.Visible = false;
+            }
+            else
+            {
+                txt_dias_detalle.Attributes.Remove("disabled");
+                DropDownList_estadolicencia_detalle.Attributes.Remove("disabled");
+                txt_apreciacion_detalle.Attributes.Remove("disabled");
+                btn_modificar_licenciaoperacional.Visible = true;
+                btn_eliminar_licenciaoperacional.Visible = true;
+            }
         }
 
 

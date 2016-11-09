@@ -208,6 +208,10 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>¡Bien hecho!</strong> La Licencia Operacional se ha eliminado correctamente. </div>
 
+                <div class="alert alert-success" id="div_alert_modificarlicope_ok" runat="server" visible="false">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>¡Bien hecho!</strong> La Licencia Operacional se ha modificado correctamente. </div>
+
     <div class="alert alert-danger alert-dismissable" id="div_alert_nuevalicope_error" runat="server" visible="false">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>¡Error!</strong> Ha ocurrido un inconveniente, si ésto persiste, contacta al Administrador del Sistema. </div>
@@ -456,6 +460,7 @@
         <asp:PostBackTrigger ControlID="btn_grabarnueva_licenciaoperacional" />
         <asp:PostBackTrigger ControlID="btn_volvernueva_licenciaoperacional" />
         <asp:PostBackTrigger ControlID="btn_eliminar_licenciaoperacional" />
+        <asp:PostBackTrigger ControlID="btn_modificar_licenciaoperacional" />
         <asp:AsyncPostBackTrigger ControlID="gvRegistroHistorico" EventName="RowCommand" />
         <asp:AsyncPostBackTrigger ControlID="gvDetalleLicenciaOperacional" EventName="RowCommand" />
         <asp:AsyncPostBackTrigger ControlID="gvNuevaLicenciaOperacional" EventName="RowCommand" />
