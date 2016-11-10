@@ -14,3 +14,4 @@ C:\Users\Maosky8\Documents\GitHub\Cchen_RegistroClinico\Cchen_RegistroClinico\Fi
 C:\Users\Maosky8\Documents\GitHub\Cchen_RegistroClinico\Cchen_RegistroClinico\FichaMedica\CCHEN_FichaMedica_Datos\bin\Debug\CCHEN_FichaMedica_Datos.pdb
 C:\Users\Maosky8\Documents\GitHub\Cchen_RegistroClinico\Cchen_RegistroClinico\FichaMedica\CCHEN_FichaMedica_Datos\obj\Debug\CCHEN_FichaMedica_Datos.dll
 C:\Users\Maosky8\Documents\GitHub\Cchen_RegistroClinico\Cchen_RegistroClinico\FichaMedica\CCHEN_FichaMedica_Datos\obj\Debug\CCHEN_FichaMedica_Datos.pdb
+C:\Users\Maosky8\Documents\GitHub\Cchen_RegistroClinico\Cchen_RegistroClinico\FichaMedica\CCHEN_FichaMedica_Datos\obj\Debug\CCHEN_FichaMedica_Datos.csprojResolveAssemblyReference.cache

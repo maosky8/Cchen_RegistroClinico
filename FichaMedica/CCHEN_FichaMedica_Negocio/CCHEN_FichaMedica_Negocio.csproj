@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cita.cs" />
+    <Compile Include="Custom\DatosBuscadorAnalisisLab.cs" />
     <Compile Include="Custom\DatosBuscadorCita.cs" />
     <Compile Include="Custom\DatosBuscadorRegistroClinico.cs" />
     <Compile Include="Custom\DatosDetalleCita.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Custom\DatosNuevoArchivo.cs" />
     <Compile Include="Custom\DatosNuevoExamen.cs" />
     <Compile Include="Custom\DatosNuevoPaciente.cs" />
+    <Compile Include="Custom\ResultadoBuscadorAnalisisLab.cs" />
     <Compile Include="Custom\ResultadoLicenciaOperacional.cs" />
     <Compile Include="Custom\ResultadoBuscadorCita.cs" />
     <Compile Include="Custom\ResultadoBuscadorRegistroClinico.cs" />

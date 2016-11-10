@@ -78,6 +78,21 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             }
         }
         //FileUpload SubirArchivos = new FileUpload();
+
+        public DataTable TableAnalisisLab
+        {
+            get
+            {
+                if (ViewState["TableAnalisisLab"] != null)
+                    return (DataTable)ViewState["TableAnalisisLab"];
+                else
+                    return null;
+            }
+            set
+            {
+                ViewState["TableAnalisisLab"] = value;
+            }
+        }
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -89,8 +104,27 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
                     ControlDisplayDiv();
                     Buscar_RegistroHistorico(Convert.ToInt32(Request.QueryString["rut"].ToString()));
                     Buscar_LicenciaOperacional( Convert.ToInt32(Request.QueryString["rut"].ToString()) , Convert.ToInt32(Session["RUT_Sesion"].ToString()) );
-                }
+                Cargar_AnalisisClinico(Convert.ToInt32(Request.QueryString["rut"].ToString()));
+                Cargar_ConsultaAnalisis();
             }
+            }
+
+        //ERIC
+        protected void Cargar_AnalisisClinico(int rut)
+        {
+            Llena_AnalisisLaboratorio(ddl_AnalisisLab);
+        }
+
+        protected void Llena_AnalisisLaboratorio(DropDownList ddl)
+        {
+            ddl.DataSource = CCHEN_FichaMedica_Negocio.RegistroClinico.AnalisisDeLaboratorio();
+            ddl.DataValueField = "ID";
+            ddl.DataTextField = "EXAMEN";
+            ddl.DataBind();
+
+            ddl.Items.Insert(0, new ListItem("-- Seleccione --", "-1"));
+            ddl.SelectedIndex = 0;
+        }
 
 
         protected void btn_modificar_clic(object sender, EventArgs e)
@@ -691,6 +725,285 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
         protected void DropDownList_EstadoLicencia_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+
+
+
+
+        //ERIC
+        protected void btn_Ingresar_Click(object sender, EventArgs e)
+        {
+            int id = CCHEN_FichaMedica_Negocio.Paciente.ObtenerIdRegistroClinico(Int32.Parse(Session["RutPaciente"].ToString()));
+            int analisis = Int32.Parse(ddl_AnalisisLab.SelectedValue);
+            DateTime fechaAnalisis = DateTime.Parse(tb_fecha.Text);
+            string resultado = tb_resultado.Text;
+            string unidad = lbl_unidad_medida.Text;
+            string lugar = tb_lugarRealizacion.Text;
+            int estado = 1; // Iniciado
+            string nombreArchivo = "";
+            string extArchivo = "";
+            byte[] archivo = null;
+            string ruta = "";
+            int tamano = 0;
+            bool exito = false;
+
+            try
+            {
+                if (fu_examen.HasFile)
+                {
+                    // Verificar que coincida con los formatos.
+                    string ext = fu_examen.PostedFile.FileName;
+                    ext = ext.Substring(ext.LastIndexOf(".") + 1).ToLower();
+                    string[] formatos = new string[] { "jpg", "jpeg", "bmp", "png", "gif", "pdf", "doc", "docx" };
+                    if (Array.IndexOf(formatos, ext) < 0)
+                    {
+                        // Mensaje de que el formato no es válido.
+                    }
+                    else
+                    {
+                        nombreArchivo = fu_examen.PostedFile.FileName.Substring(0, fu_examen.PostedFile.FileName.LastIndexOf("."));
+                        extArchivo = ext;
+                        archivo = new byte[fu_examen.PostedFile.InputStream.Length];
+                        fu_examen.PostedFile.InputStream.Read(archivo, 0, archivo.Length);
+                        ruta = Server.MapPath("Upload/Laboratorio/" + Session["RutPaciente"].ToString());
+                        tamano = fu_examen.PostedFile.ContentLength;
+                        exito = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mensaje de que hubo un error al subir.
+                return;
+            }
+
+            if (exito)
+            {
+                // Si no existe la ruta, la crea.
+                if (!Directory.Exists(ruta))
+                    Directory.CreateDirectory(ruta);
+
+                string archivoServidor = String.Format("{0}\\{1}", ruta, fu_examen.PostedFile.FileName);
+                // Verificar que el archivo no exista
+                if (File.Exists(archivoServidor))
+                {
+                    // Mensaje de que el nombre de archivo ya existe.
+                }
+                else
+                {
+                    try
+                    {
+                        fu_examen.PostedFile.SaveAs(archivoServidor);
+                        int insertar = CCHEN_FichaMedica_Negocio.RegistroClinico.insertar_analisisLab_archivo(id, analisis, fechaAnalisis, resultado, unidad, lugar, estado, nombreArchivo, extArchivo, null, ruta, tamano);
+                        if (insertar == 0)
+                        {
+                            File.Delete(archivoServidor);
+                        }
+                        else
+                        {
+                            if (!Directory.Exists(ruta + "/" + insertar.ToString()))
+                                Directory.CreateDirectory(ruta + "/" + insertar.ToString());
+
+                            File.Move(archivoServidor, ruta + "/" + insertar.ToString() + "/" + fu_examen.PostedFile.FileName);
+
+                            ControlAlert();
+                            div_alert_analisis_clinicos_exito.Visible = true;
+                            LimpiaNuevoanalisis();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Mensaje que hubo un error al guardar.
+                    }
+                }
+            }
+            else
+            {
+
+            }
+
+
+        }
+
+        protected void hidTAB_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddl_AnalisisLab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddl = (DropDownList)sender;
+            hidTAB.Value = "analisis_clinicos";
+
+            if (ddl.SelectedValue != "-1")
+            {
+                lbl_unidad_medida.Text = CCHEN_FichaMedica_Negocio.RegistroClinico.UnidadMedidaDeLaboratorio(Int32.Parse(ddl.SelectedValue));
+            }
+            else
+            {
+                lbl_unidad_medida.Text = "";
+            }
+
+            colapse_nuevo_analisis.Attributes.Remove("class");
+            colapse_nuevo_analisis.Attributes.Add("class", "panel-collapse collapse in");
+        }
+
+        protected void LimpiaNuevoanalisis()
+        {
+            ddl_AnalisisLab.SelectedValue = "-1";
+            tb_fecha.Text = "";
+            tb_resultado.Text = "";
+            lbl_unidad_medida.Text = "";
+            tb_lugarRealizacion.Text = "";
+        }
+
+        protected void Cargar_ConsultaAnalisis()
+        {
+            Llena_AnalisisLaboratorio(ddl_consulta_analisis);
+            Llena_EstadoAnalisis(ddl_consulta_estado);
+        }
+
+        protected void Llena_EstadoAnalisis(DropDownList ddl)
+        {
+            ddl.DataSource = CCHEN_FichaMedica_Negocio.RegistroClinico.EstadodeAnalisisLaboratorio();
+            ddl.DataValueField = "ID";
+            ddl.DataTextField = "NOMBRE";
+            ddl.DataBind();
+
+            ddl.Items.Insert(0, new ListItem("-- Seleccione --", "-1"));
+            ddl.SelectedIndex = 0;
+        }
+
+        protected void btn_consulta_buscar_Click(object sender, EventArgs e)
+        {
+            hidTAB.Value = "analisis_clinicos";
+            ControlAlert();
+            CCHEN_FichaMedica_Negocio.Custom.DatosBuscadorAnalisisLab objeto = new CCHEN_FichaMedica_Negocio.Custom.DatosBuscadorAnalisisLab();
+            objeto.Rut = Int32.Parse(Session["RutPaciente"].ToString());
+            if (ddl_consulta_analisis.SelectedValue == "-1")
+                objeto.AnaLisisLab = null;
+            else
+                objeto.AnaLisisLab = Int32.Parse(ddl_consulta_analisis.SelectedValue);
+
+            if (ddl_consulta_estado.SelectedValue == "-1")
+                objeto.Estado = null;
+            else
+                objeto.Estado = Int32.Parse(ddl_consulta_estado.SelectedValue);
+
+            if (tb_consulta_desde.Text.Trim() == "")
+                objeto.Desde = null;
+            else
+                objeto.Desde = DateTime.Parse(tb_consulta_desde.Text);
+
+            if (tb_consulta_hasta.Text.Trim() == "")
+                objeto.Hasta = null;
+            else
+                objeto.Hasta = DateTime.Parse(tb_consulta_hasta.Text);
+
+            IList<CCHEN_FichaMedica_Negocio.Custom.ResultadoBuscadorAnalisisLab> Lista = CCHEN_FichaMedica_Negocio.RegistroClinico.ObtenerAnalisisClinico(objeto);
+
+            if (Lista == null || Lista.Count == 0)
+            {
+                ControlAlert();
+            }
+            else
+            {
+                TableAnalisisLab = ToDataTable(Lista.ToList());
+                gvAnalisisLab.DataSource = Lista.OrderBy(p => p.ID);
+                gvAnalisisLab.DataBind();
+                colapse_consulta_analisis_clinico.Attributes.Remove("class");
+                colapse_consulta_analisis_clinico.Attributes.Add("class", "panel-collapse collapse in");
+            }
+
+        }
+
+        protected void gvAnalisisLab_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                switch (e.CommandName)
+                {
+                    case "Descargar":
+                        string[] separador = e.CommandArgument.ToString().Split(':');
+                        int id_carpeta = Int32.Parse(separador[0].ToString());
+                        string nombreArchivo = separador[1].ToString();
+                        string filePath = Server.MapPath("Upload/Laboratorio/" + Session["RutPaciente"].ToString() + "/" + id_carpeta);
+                        System.IO.FileInfo toDownload =
+                                    new System.IO.FileInfo(filePath + "/" + nombreArchivo);
+
+                        HttpContext.Current.Response.Clear();
+                        HttpContext.Current.Response.AddHeader("Content-Disposition",
+                                    "attachment; filename=" + nombreArchivo);
+                        HttpContext.Current.Response.AddHeader("Content-Length",
+                                    toDownload.Length.ToString());
+                        HttpContext.Current.Response.ContentType = "application/octet-stream";
+                        HttpContext.Current.Response.WriteFile("Upload/Laboratorio/" + Session["RutPaciente"].ToString() + "/" + id_carpeta + "/" + nombreArchivo);
+                        HttpContext.Current.Response.End();
+                        break;
+
+                    case "Seleccionar":
+                        int index = Int32.Parse(e.CommandArgument.ToString());
+                        Cargar_EditarAnalisisCli(index);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Mensaje", "alert('Ha ocurrido un error, favor contacte al administrador del sistema.')", true);
+            }
+        }
+
+        protected void Cargar_EditarAnalisisCli(int index)
+        {
+            GridViewRow gvRow = gvAnalisisLab.Rows[index];
+            ControlAlert();
+            div_edit_analisisLab.Visible = true;
+            Llena_AnalisisLaboratorio(ddl_edit_analisisLab);
+            Llena_EstadoAnalisis(ddl_edit_estado);
+            ddl_edit_analisisLab.SelectedValue = gvAnalisisLab.DataKeys[index].Values["Id_AnalisisLab"].ToString();
+            hdnFechaEdit.Value = DateTime.Parse(Server.HtmlDecode(gvRow.Cells[3].Text)).ToShortDateString();
+            tb_edit_resultado.Text = gvAnalisisLab.DataKeys[index].Values["Resultado"].ToString(); ;
+            lb_edit_resultado.Text = gvAnalisisLab.DataKeys[index].Values["Unidad"].ToString();
+            tb_edit_lugar.Text = Server.HtmlDecode(gvRow.Cells[7].Text);
+            ddl_edit_estado.SelectedValue = gvAnalisisLab.DataKeys[index].Values["idEstado"].ToString();
+            Session["idAnacli"] = Int32.Parse(gvAnalisisLab.DataKeys[index].Values["ID"].ToString());
+            Session["nombreArchivo"] = gvAnalisisLab.DataKeys[index].Values["NombreArchivo"].ToString();
+            lb_edit_nombreArchivo.Text = Session["nombreArchivo"].ToString();
+            Session["ruta"] = gvAnalisisLab.DataKeys[index].Values["Ruta"].ToString();
+            Session["Tamano"] = Int32.Parse(gvAnalisisLab.DataKeys[index].Values["Tamano"].ToString());
+            /* TRAER EL ARCHIVO CARGADO. POR AHORA NO SE PUEDE.*/
+
+        }
+
+        protected void btn_edit_editar_Click(object sender, EventArgs e)
+        {
+            int id = CCHEN_FichaMedica_Negocio.Paciente.ObtenerIdRegistroClinico(Int32.Parse(Session["RutPaciente"].ToString()));
+            int analisis = Int32.Parse(ddl_edit_analisisLab.SelectedValue);
+            DateTime fechaAnalisis = DateTime.Parse(tb_edit_fecha.Text);
+            string resultado = tb_edit_resultado.Text;
+            string unidad = lb_edit_resultado.Text;
+            string lugar = tb_edit_lugar.Text;
+            int estado = Int32.Parse(ddl_edit_estado.SelectedValue);
+            string nombreArchivo = Session["NombreArchivo"].ToString();
+            string[] archivoExt = nombreArchivo.Split('.');
+            string extArchivo = archivoExt[archivoExt.Length - 1];
+            byte[] archivo = null;
+            string ruta = Session["ruta"].ToString();
+            int tamano = (Int32)Session["Tamano"];
+            bool exito = true;
+            int id_anacli = (Int32)Session["idAnaCli"];
+
+            try
+            {
+                CCHEN_FichaMedica_Negocio.RegistroClinico.actualizar_analisisLab_archivo(id, analisis, fechaAnalisis, resultado, unidad, lugar, estado, nombreArchivo, extArchivo, archivo, ruta, tamano, id_anacli);
+
+            }
+            catch (Exception ex)
+            {
+                // Mensaje que hubo un error al guardar.
+            }
         }
     }
 }

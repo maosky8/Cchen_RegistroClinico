@@ -82,5 +82,31 @@ namespace CCHEN_FichaMedica_Datos
             return ds;
         }
 
+
+        public static int ExecuteDataSet_rc_retorno(string sqlSpName, SqlParameter[] dbParams, string varRetorno)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString_rc"].ConnectionString;
+
+            //SqlConnection cn = new SqlConnection(ConfigurationManager.AppSettings["connectionString"]);
+            SqlCommand cmd = new SqlCommand(sqlSpName, con);
+            cmd.CommandTimeout = 600;
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (dbParams != null)
+            {
+                foreach (SqlParameter dbParam in dbParams)
+                {
+                    cmd.Parameters.Add(dbParam);
+                }
+            }
+            con.Open();
+            cmd.ExecuteNonQuery();
+            int retorno = Int32.Parse(cmd.Parameters[varRetorno].Value.ToString());
+            return retorno;
+        }
+
+
+
     }
 }

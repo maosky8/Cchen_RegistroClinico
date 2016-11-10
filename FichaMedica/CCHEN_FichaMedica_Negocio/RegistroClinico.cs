@@ -375,6 +375,311 @@ namespace CCHEN_FichaMedica_Negocio
 
             return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
         }
+
+        public static DataSet AnalisisDeLaboratorio()
+        {
+            string procedimiento = "RC_SP_analisis_de_laboratorio";
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, null);
+        }
+
+        public static DataSet EstadodeAnalisisLaboratorio()
+        {
+            string procedimiento = "RC_SP_estado_de_analisis_lab";
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, null);
+        }
+
+        public static string UnidadMedidaDeLaboratorio(int id_analisis_laboratorio)
+        {
+            string procedimiento = "RC_SP_unidad_de_medida";
+            SqlParameter[] dbParams = new SqlParameter[1];
+
+            dbParams[0] = new SqlParameter("@id_analisis_lab", SqlDbType.Int);
+            dbParams[0].Value = id_analisis_laboratorio;
+            DataSet ds = CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+            return ds.Tables[0].Rows[0][0].ToString();
+        }
+
+        
+       
+
+        public static int insertar_analisisLab_archivo(int regcli, int analisis, DateTime fecha, string resultado, string unidad, string lugar, int estado,
+                                                       string nombreArchivo, string ext, byte[] archivo, string ruta, int tamano)
+        {
+            string procedimiento = "RC_SP_inserta_analisis_archivo";
+            SqlParameter[] dbParams = new SqlParameter[13];
+
+            dbParams[0] = new SqlParameter("@id", SqlDbType.Int);
+            dbParams[0].Value = regcli;
+            if (analisis == -1)
+            {
+                dbParams[1] = new SqlParameter("@analisis", DBNull.Value);
+                dbParams[1].Value = analisis;
+            }
+            else
+            {
+                dbParams[1] = new SqlParameter("@analisis", SqlDbType.Int);
+                dbParams[1].Value = analisis;
+            }
+
+            dbParams[2] = new SqlParameter("@fechaAnalisis", SqlDbType.Date);
+            dbParams[2].Value = fecha;
+            if (resultado == "")
+            {
+                dbParams[3] = new SqlParameter("@resultado", DBNull.Value);
+                dbParams[3].Value = resultado;
+            }
+            else
+            {
+                dbParams[3] = new SqlParameter("@resultado", SqlDbType.NVarChar);
+                dbParams[3].Value = resultado;
+            }
+
+            if (unidad == "")
+            {
+                dbParams[4] = new SqlParameter("@unidad", DBNull.Value);
+                dbParams[4].Value = unidad;
+            }
+            else
+            {
+                dbParams[4] = new SqlParameter("@unidad", SqlDbType.NVarChar);
+                dbParams[4].Value = unidad;
+            }
+
+            if (lugar == "")
+            {
+                dbParams[5] = new SqlParameter("@lugar", DBNull.Value);
+                dbParams[5].Value = lugar;
+            }
+            else
+            {
+                dbParams[5] = new SqlParameter("@lugar", SqlDbType.NVarChar);
+                dbParams[5].Value = lugar;
+            }
+
+            dbParams[6] = new SqlParameter("@estado", SqlDbType.SmallInt);
+            dbParams[6].Value = estado;
+
+            if (nombreArchivo == "")
+            {
+                dbParams[7] = new SqlParameter("@nombreArchivo", DBNull.Value);
+                dbParams[7].Value = nombreArchivo;
+            }
+            else
+            {
+                dbParams[7] = new SqlParameter("@nombreArchivo", SqlDbType.NVarChar);
+                dbParams[7].Value = nombreArchivo;
+            }
+
+            if (ext == "")
+            {
+                dbParams[8] = new SqlParameter("@extArchivo", DBNull.Value);
+                dbParams[8].Value = ext;
+            }
+            else
+            {
+                dbParams[8] = new SqlParameter("@extArchivo", SqlDbType.NVarChar);
+                dbParams[8].Value = ext;
+            }
+
+            if (archivo == null)
+            {
+                dbParams[9] = new SqlParameter("@archivo", DBNull.Value);
+                dbParams[9].Value = archivo;
+            }
+            else
+            {
+                dbParams[9] = new SqlParameter("@archivo", SqlDbType.VarBinary);
+                dbParams[9].Value = archivo;
+            }
+
+            if (ruta == "")
+            {
+                dbParams[10] = new SqlParameter("@ruta", DBNull.Value);
+                dbParams[10].Value = ruta;
+            }
+            else
+            {
+                dbParams[10] = new SqlParameter("@ruta", SqlDbType.NVarChar);
+                dbParams[10].Value = ruta;
+            }
+
+            if (tamano == 0)
+            {
+                dbParams[11] = new SqlParameter("@tamano", DBNull.Value);
+                dbParams[11].Value = tamano;
+            }
+            else
+            {
+                dbParams[11] = new SqlParameter("@tamano", SqlDbType.Int);
+                dbParams[11].Value = tamano;
+            }
+
+            dbParams[12] = new SqlParameter("@retorno", SqlDbType.Int);
+            dbParams[12].Direction = ParameterDirection.ReturnValue;
+
+            int retorno = CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc_retorno(procedimiento, dbParams, "@retorno");
+
+            return retorno;
+        }
+
+        public static void actualizar_analisisLab_archivo(int regcli, int analisis, DateTime fecha, string resultado, string unidad, string lugar, int estado,
+                                                       string nombreArchivo, string ext, byte[] archivo, string ruta, int tamano, int id_anacli)
+        {
+            string procedimiento = "RC_SP_update_analisis_archivo";
+            SqlParameter[] dbParams = new SqlParameter[13];
+
+            dbParams[0] = new SqlParameter("@id", SqlDbType.Int);
+            dbParams[0].Value = regcli;
+            if (analisis == -1)
+            {
+                dbParams[1] = new SqlParameter("@analisis", DBNull.Value);
+                dbParams[1].Value = analisis;
+            }
+            else
+            {
+                dbParams[1] = new SqlParameter("@analisis", SqlDbType.Int);
+                dbParams[1].Value = analisis;
+            }
+
+            dbParams[2] = new SqlParameter("@fechaAnalisis", SqlDbType.Date);
+            dbParams[2].Value = fecha;
+            if (resultado == "")
+            {
+                dbParams[3] = new SqlParameter("@resultado", DBNull.Value);
+                dbParams[3].Value = resultado;
+            }
+            else
+            {
+                dbParams[3] = new SqlParameter("@resultado", SqlDbType.NVarChar);
+                dbParams[3].Value = resultado;
+            }
+
+            if (unidad == "")
+            {
+                dbParams[4] = new SqlParameter("@unidad", DBNull.Value);
+                dbParams[4].Value = unidad;
+            }
+            else
+            {
+                dbParams[4] = new SqlParameter("@unidad", SqlDbType.NVarChar);
+                dbParams[4].Value = unidad;
+            }
+
+            if (lugar == "")
+            {
+                dbParams[5] = new SqlParameter("@lugar", DBNull.Value);
+                dbParams[5].Value = lugar;
+            }
+            else
+            {
+                dbParams[5] = new SqlParameter("@lugar", SqlDbType.NVarChar);
+                dbParams[5].Value = lugar;
+            }
+
+            dbParams[6] = new SqlParameter("@estado", SqlDbType.SmallInt);
+            dbParams[6].Value = estado;
+
+            if (nombreArchivo == "")
+            {
+                dbParams[7] = new SqlParameter("@nombreArchivo", DBNull.Value);
+                dbParams[7].Value = nombreArchivo;
+            }
+            else
+            {
+                dbParams[7] = new SqlParameter("@nombreArchivo", SqlDbType.NVarChar);
+                dbParams[7].Value = nombreArchivo;
+            }
+
+            if (ext == "")
+            {
+                dbParams[8] = new SqlParameter("@extArchivo", DBNull.Value);
+                dbParams[8].Value = ext;
+            }
+            else
+            {
+                dbParams[8] = new SqlParameter("@extArchivo", SqlDbType.NVarChar);
+                dbParams[8].Value = ext;
+            }
+
+            if (archivo == null)
+            {
+                dbParams[9] = new SqlParameter("@archivo", DBNull.Value);
+                dbParams[9].Value = archivo;
+            }
+            else
+            {
+                dbParams[9] = new SqlParameter("@archivo", SqlDbType.VarBinary);
+                dbParams[9].Value = archivo;
+            }
+
+            if (ruta == "")
+            {
+                dbParams[10] = new SqlParameter("@ruta", DBNull.Value);
+                dbParams[10].Value = ruta;
+            }
+            else
+            {
+                dbParams[10] = new SqlParameter("@ruta", SqlDbType.NVarChar);
+                dbParams[10].Value = ruta;
+            }
+
+            if (tamano == 0)
+            {
+                dbParams[11] = new SqlParameter("@tamano", DBNull.Value);
+                dbParams[11].Value = tamano;
+            }
+            else
+            {
+                dbParams[11] = new SqlParameter("@tamano", SqlDbType.Int);
+                dbParams[11].Value = tamano;
+            }
+
+            dbParams[12] = new SqlParameter("@idPrincipal", SqlDbType.Int);
+            dbParams[12].Value = id_anacli;
+
+            DataSet retorno = CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+        }
+
+
+        public static IList<Custom.ResultadoBuscadorAnalisisLab> ObtenerAnalisisClinico(Custom.DatosBuscadorAnalisisLab obj)
+        {
+            string procedimiento = "RC_SP_con_analisis_clinico";
+            SqlParameter[] dbParams = new SqlParameter[5];
+            dbParams[0] = new SqlParameter("@Rut", SqlDbType.Int);
+            dbParams[0].Value = obj.Rut;
+            dbParams[1] = new SqlParameter("@Analisis", SqlDbType.Int);
+            dbParams[1].Value = obj.AnaLisisLab;
+            dbParams[2] = new SqlParameter("@Estado", SqlDbType.Int);
+            dbParams[2].Value = obj.Estado;
+            dbParams[3] = new SqlParameter("@Desde", SqlDbType.Date);
+            dbParams[3].Value = obj.Desde;
+            dbParams[4] = new SqlParameter("@Hasta", SqlDbType.Date);
+            dbParams[4].Value = obj.Hasta;
+
+            DataSet ds = CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+            var list = (ds.Tables[0].AsEnumerable().Select(
+                df =>
+                new Custom.ResultadoBuscadorAnalisisLab
+                {
+                    ID = Convert.ToInt32(df["ID"].ToString()),
+                    Id_AnalisisLab = Convert.ToInt32(df["id_lab"].ToString()),
+                    AnalisisLab = df["AnalisisLab"].ToString(),
+                    Fecha = df["Fecha"].ToString(),
+                    Resultado = df["Resultado"].ToString(),
+                    Unidad = df["Unidad"].ToString(),
+                    Lugar = df["Lugar"].ToString(),
+                    Estado = df["Estado"].ToString(),
+                    idEstado = Convert.ToInt32(df["idEstado"].ToString()),
+                    Editar = df["Editar"].ToString(),
+                    NombreArchivo = df["NombreArchivo"].ToString(),
+                    Ruta = df["Ruta"].ToString(),
+                    Tamano = Convert.ToInt32(df["Tamano"].ToString()),
+                })).ToList();
+
+            return list;
+        }
+
+
     }
 
 }

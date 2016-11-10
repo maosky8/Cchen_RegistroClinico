@@ -369,13 +369,156 @@
     </div>
     </div>
 
-<div id="analisis_clinicos" class="tabcontent" style="display:none"  >
-    <div class="alert alert-warning alert-dismissable" id="div_alert_analisis_clinicos_error" runat="server" visible="false">
-            <strong>¡Lástima!</strong> Tu Rol no tiene acceso a esta información. </div>
-    <div class="panel-body" id="div_analisis_clinicos" runat="server">
-        asdasdasda
+
+
+        <div id="analisis_clinicos" class="tabcontent" style="display:none"  >
+        <div class="alert alert-warning alert-dismissable" id="div_alert_analisis_clinicos_error" runat="server" visible="false">
+                <strong>¡Lástima!</strong> Tu Rol no tiene acceso a esta información. 
         </div>
-</div>
+        <div class="alert alert-success" id="div_alert_analisis_clinicos_exito" runat="server" visible="false">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>¡Bien hecho!</strong> El archivo se ha cargado correctamente. 
+        </div>
+        <div class="panel-body" id="div_analisis_clinicos" runat="server">
+            <div class="panel-body" id="div_ingreso_analisis_clinico" runat="server">
+              <div class="panel-group" id="div_accordion_analisis_clinico">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#div_accordion_analisis_clinico" href="#<%=colapse_nuevo_analisis.ClientID%>">Nuevo Análisis de Laboratorio</a>
+                    </h4>
+                    <div id="colapse_nuevo_analisis" class="panel-collapse collapse" runat="server">
+                        <div class="panel-body">
+                            <div class="col-sm-3"><label for="inputName" class="control-label">Análisis de Laboratorio:</label></div>
+                            <div class="col-sm-3"><asp:DropDownList ID="ddl_AnalisisLab" runat="server" class="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddl_AnalisisLab_SelectedIndexChanged"></asp:DropDownList></div>
+                            <div class="col-sm-3"><label for="inputName" class="control-label">Fecha :</label></div>
+                            <div class="col-sm-3"><asp:TextBox id="tb_fecha" runat="server" class="form-control" type="date" step="1" min="2016-01-01"></asp:TextBox></div>
+
+                            <div class="col-sm-3"><label for="inputName" class="control-label">Resultado :</label></div>
+                            <div class="col-sm-3"><asp:TextBox id="tb_resultado" runat="server" class="form-control"></asp:TextBox></div>
+                            <div class="col-sm-6"><asp:Label id="lbl_unidad_medida" runat="server" class="form-control" BorderStyle="None"></asp:Label></div>
+
+                            <div class="col-sm-3"><label for="inputName" class="control-label">Lugar de Realización :</label></div>
+                            <div class="col-sm-3"><asp:TextBox id="tb_lugarRealizacion" runat="server" class="form-control"></asp:TextBox></div>
+                            <div class="col-sm-6">
+                                <asp:FileUpload runat="server" ID="fu_examen" AllowMultiple="false" class="btn btn-info" />
+                            </div>
+
+                            <div class="col-sm-3"><asp:Button ID="btn_Ingresar" runat="server" Text="Ingresar" class="btn btn-primary" OnClick="btn_Ingresar_Click"/></div>
+                            
+
+                            <div class="alert alert-success" id="div2" runat="server" visible="false">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>¡Bien hecho!</strong> El archivo se ha cargado correctamente. 
+                            </div>
+                        </div>
+                    </div>                
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#div_accordion_analisis_clinico" href="#<%=colapse_consulta_analisis_clinico.ClientID%>">Editar Análisis de Laboratorio</a>
+                      </h4>
+                      <div id="colapse_consulta_analisis_clinico" class="panel-collapse collapse" runat="server">
+                        <div class="panel-body">
+                            <div class="col-sm-3"><label for="inputName" class="control-label">Análisis :</label></div>
+                            <div class="col-sm-3"><asp:DropDownList ID="ddl_consulta_analisis" runat="server" CssClass="form-control"></asp:DropDownList></div>
+                            <div class="col-sm-3"><label for="inputName" class="control-label">Estado :</label></div>
+                            <div class="col-sm-3"><asp:DropDownList ID="ddl_consulta_estado" runat="server" CssClass="form-control"></asp:DropDownList></div>
+
+                            <div class="col-sm-3"><label for="inputName" class="control-label">Desde :</label></div>
+                            <div class="col-sm-3"><asp:TextBox id="tb_consulta_desde" runat="server" class="form-control" type="date" step="1" min="2016-01-01"></asp:TextBox></div>
+                            <div class="col-sm-3"><label for="inputName" class="control-label">Hasta :</label></div>
+                            <div class="col-sm-3"><asp:TextBox id="tb_consulta_hasta" runat="server" class="form-control" type="date" step="1" min="2016-01-01"></asp:TextBox></div>
+
+                            <div class="col-sm-3"><asp:Button ID="btn_consulta_buscar" runat="server" Text="Buscar" class="btn btn-primary" OnClick="btn_consulta_buscar_Click"/></div>
+                        </div>
+                        <div class="panel panel-info" id="div_resultado" runat="server" visible="true">
+                          <div class="panel-heading"><h3 class="panel-title">Resultado de la búsqueda</h3></div>
+                          <div class="panel-body">
+                              <asp:GridView ID="gvAnalisisLab" CssClass="table table-striped" 
+                                  AutoGenerateColumns="False" 
+                                  Width="100%" DataKeyNames="ID, Id_AnalisisLab, Resultado, Unidad, idEstado, NombreArchivo, Ruta, Tamano"
+                                  runat="server" OnRowCommand="gvAnalisisLab_RowCommand">
+                                  <Columns>
+                                      <asp:BoundField DataField="ID" HeaderText="ID" Visible="false" ItemStyle-Width="0%"></asp:BoundField>
+                                      <asp:BoundField DataField="Id_AnalisisLab" HeaderText="id_lab" Visible="false"></asp:BoundField>
+                                      <asp:BoundField DataField="AnalisisLab" HeaderText="Análisis de Lab." Visible="true" ItemStyle-Width="15%"></asp:BoundField>
+                                      <asp:BoundField DataField="Fecha" HeaderText="Fecha" Visible="true" ItemStyle-Width="15%"></asp:BoundField>
+                                      <asp:BoundField DataField="Resultado" HeaderText="ResultadoOculto" Visible="false"></asp:BoundField>
+                                      <asp:BoundField DataField="Unidad" HeaderText="Unidad" Visible="false"></asp:BoundField>
+                                      <asp:TemplateField HeaderText="Resultado" ItemStyle-Width="15%" HeaderStyle-HorizontalAlign="Left">
+                                          <ItemTemplate>
+                                              <asp:Label ID="lbl_grid_resultado" runat="server" Text='<%# Eval("Resultado") + " " + Eval("Unidad") %>' />
+                                          </ItemTemplate>
+                                      </asp:TemplateField>
+                                      <asp:BoundField DataField="Lugar" HeaderText="Lugar" Visible="true" ItemStyle-Width="15%"></asp:BoundField>
+                                      <asp:BoundField DataField="Estado" HeaderText="Estado" Visible="true" ItemStyle-Width="15%"></asp:BoundField>
+                                      <asp:BoundField DataField="idEstado" HeaderText="idEstado" Visible="false" />
+                                      <asp:TemplateField HeaderText=" " ItemStyle-Width="15%" HeaderStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lnk_Editar" runat="server" Text='<%#Eval("Editar")%>'
+                                                CommandName="Seleccionar" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'></asp:LinkButton>
+                                        </ItemTemplate>
+                                      </asp:TemplateField>
+                                      <asp:TemplateField HeaderText="Archivo" ItemStyle-Width="10%" HeaderStyle-HorizontalAlign="Left">
+                                          <ItemTemplate>
+                                                <asp:LinkButton ID="lnk_grid_descarga" runat="server" Text="Descargar" CommandName="Descargar"
+                                                    CommandArgument='<%# Eval("ID") + ":" + Eval("NombreArchivo") %>'></asp:LinkButton>
+                                          </ItemTemplate>
+                                      </asp:TemplateField>
+                                      <asp:BoundField DataField="NombreArchivo" Visible="false" HeaderText="NombreArchivo"/>
+                                      <asp:BoundField DataField="Ruta" HeaderText="Ruta" Visible="false" />
+                                      <asp:BoundField DataField="Tamano" HeaderText="Tamaño" Visible="false" />
+                                  </Columns>
+                              </asp:GridView>
+                          </div>
+                      </div>
+
+                        <div class="panel panel-info" id="div_edit_analisisLab" runat="server" visible="false">
+                            <div class="panel-heading"><h3 class="panel-title">Editar Análisis de Laboratorio</h3></div>
+                            <div class="panel-body">
+                                <div id="div_edit_form" class="form-group" runat="server">
+                                    <div class="col-sm-3"><label for="inputName" class="control-label">Análisis de Laboratorio:</label></div>
+                                    <div class="col-sm-3"><asp:DropDownList ID="ddl_edit_analisisLab" runat="server" class="form-control" AutoPostBack="True"></asp:DropDownList></div>
+                                    <div class="col-sm-3"><label for="inputName" class="control-label">Fecha :</label></div>
+                                    <div class="col-sm-3"><asp:TextBox id="tb_edit_fecha" runat="server" class="form-control" type="date" step="1" min="2016-01-01"></asp:TextBox></div>
+
+                                    <div class="col-sm-3"><label for="inputName" class="control-label">Resultado :</label></div>
+                                    <div class="col-sm-3"><asp:TextBox id="tb_edit_resultado" runat="server" class="form-control"></asp:TextBox></div>
+                                    <div class="col-sm-6"><asp:Label id="lb_edit_resultado" runat="server" class="form-control" BorderStyle="None"></asp:Label></div>
+
+                                    <div class="col-sm-3"><label for="inputName" class="control-label">Lugar de Realización :</label></div>
+                                    <div class="col-sm-3"><asp:TextBox id="tb_edit_lugar" runat="server" class="form-control"></asp:TextBox></div>
+                                    <div class="col-sm-3"><label for="inputName" class="control-label">Estado :</label></div>
+                                    <div class="col-sm-3"><asp:DropDownList ID="ddl_edit_estado" runat="server" CssClass="form-control"></asp:DropDownList></div>
+
+                                    <asp:Label ID="lb_mensaje_edit" ForeColor="Red" Text="ESCOJA UN NUEVO ARCHIVO PARA REEMPLAZAR EL ANTERIOR." runat="server"> </asp:Label>
+                                    <div class="col-sm-3"><label for="inputName" class="control-label">Archivo :</label></div>
+                                    <div class="col-sm-3"><asp:Label ID="lb_edit_nombreArchivo" runat="server" CssClass="control-label" /></div>
+                                    <div class="col-sm-6">
+                                        <asp:FileUpload runat="server" ID="fu_edit_examen" AllowMultiple="false" class="btn btn-info" />
+                                    </div>
+                                    <div class="col-sm-3"><asp:Button ID="btn_edit_editar" runat="server" Text="Editar" class="btn btn-primary" OnClick="btn_edit_editar_Click" /></div>
+                                    <div class="alert alert-success" id="div_edit_exito" runat="server" visible="false">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>¡Bien hecho!</strong> El archivo se ha cargado correctamente. 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               </div>
+              </div> 
+            </div>
+    </div>
+</div>  
+
+
+
+
 
 <div id="registros_historicos" class="tabcontent" style="display:none"  >
     <div class="alert alert-warning alert-dismissable" id="div_alert_registros_historicos_error" runat="server" visible="false">
@@ -451,6 +594,7 @@
 <asp:HiddenField ID="hdnIdCita" runat="server" /> 
 <asp:HiddenField ID="hdnRutCita" runat="server" /> 
 <asp:HiddenField ID="hidTAB" runat="server" Value="historial_atenciones" />
+<asp:HiddenField ID="hdnFechaEdit" runat="server" Value="" />
 </div>
                       
 </ContentTemplate>
@@ -465,6 +609,11 @@
         <asp:AsyncPostBackTrigger ControlID="gvDetalleLicenciaOperacional" EventName="RowCommand" />
         <asp:AsyncPostBackTrigger ControlID="gvNuevaLicenciaOperacional" EventName="RowCommand" />
         <asp:AsyncPostBackTrigger ControlID="gvLicenciaOperacional" EventName="RowCommand" />
+        <asp:PostBackTrigger ControlID="btn_consulta_buscar" />
+        <asp:PostBackTrigger ControlID="btn_subir_registrohistorico"/>
+        <asp:PostBackTrigger ControlID="btn_Ingresar"/>
+        <asp:PostBackTrigger ControlID="ddl_AnalisisLab" />
+        <asp:PostBackTrigger ControlID="gvAnalisisLab" />
     </Triggers>
 </asp:UpdatePanel>
 </form>  

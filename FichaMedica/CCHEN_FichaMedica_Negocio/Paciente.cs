@@ -33,5 +33,18 @@ namespace CCHEN_FichaMedica_Negocio
 
             return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
         }
+
+        public static int ObtenerIdRegistroClinico(int rut)
+        {
+            string procedimiento = "RC_SP_id_registro_clinico";
+            SqlParameter[] dbParams = new SqlParameter[1];
+            dbParams[0] = new SqlParameter("@RUT", SqlDbType.Int);
+            dbParams[0].Value = rut;
+            DataSet ds = CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+            int id = Int32.Parse(ds.Tables[0].Rows[0][0].ToString());
+            return id;
+        }
+
+
     }
 }
