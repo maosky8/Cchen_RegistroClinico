@@ -92,34 +92,40 @@
             <div class="col-sm-2"><label for="inputName" class="control-label" >Sexo :</label></div>
             <div class="col-sm-4"><asp:TextBox id="lbl_sexo" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Profesión :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_profesion" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:TextBox id="lbl_profesion" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;"></asp:TextBox></div>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Nivel Educacional :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_nivel_educacional" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:DropDownList ID="DropDownList_niveleducacional_detalle" runat="server" class="form-control" ></asp:DropDownList></div>
+            <%--<div class="col-sm-4"><asp:TextBox id="lbl_nivel_educacional" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>--%>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Ocupación :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_ocupacion" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:TextBox id="lbl_ocupacion" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;"></asp:TextBox></div>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Departamento :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_departamento" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:DropDownList ID="DropDownList_departamento_detalle" runat="server" class="form-control"  ></asp:DropDownList></div>
+            <%--<div class="col-sm-4"><asp:TextBox id="lbl_departamento" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>--%>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Dirección :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_direccion" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:TextBox id="lbl_direccion" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" ></asp:TextBox></div>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Estado Civil :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_estado_civil" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:DropDownList ID="DropDownList_estadocivil_detalle" runat="server" class="form-control" ></asp:DropDownList></div>
+            <%--<div class="col-sm-4"><asp:TextBox id="lbl_estado_civil" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>--%>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Sede :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_sede" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:DropDownList ID="DropDownList_sede_detalle" runat="server" class="form-control" ></asp:DropDownList></div>
+            <%--<div class="col-sm-4"><asp:TextBox id="lbl_sede" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>--%>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Previsión :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_prevision" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:DropDownList ID="DropDownList_prevision_detalle" runat="server" class="form-control" ></asp:DropDownList></div>
+            <%--<div class="col-sm-4"><asp:TextBox id="lbl_prevision" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>--%>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Fono Contacto :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_fono_contacto" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:TextBox id="lbl_fono_contacto" runat="server" type="number" class="form-control"  style="border: 0px;background-color: #ffffff;" ></asp:TextBox></div>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Fono Emergencia :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_fono_emergencia" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:TextBox id="lbl_fono_emergencia" runat="server"  type="number" class="form-control"  style="border: 0px;background-color: #ffffff;" ></asp:TextBox></div>
             <div class="col-sm-2"><label for="inputName" class="control-label" >Contacto Emergencia :</label></div>
-            <div class="col-sm-4"><asp:TextBox id="lbl_contacto_emergencia" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" readonly=true></asp:TextBox></div>
+            <div class="col-sm-4"><asp:TextBox id="lbl_contacto_emergencia" runat="server" class="form-control"  style="border: 0px;background-color: #ffffff;" ></asp:TextBox></div>
            
            
             <div class="col-sm-12">&nbsp;</div>
             <div class="col-sm-12">&nbsp;</div>  
 
             <div class="col-sm-12" align="center">
-            <%--<asp:Button ID="btn_modificar_paciente" class="btn btn-primary" runat="server" onclick="btn_modificar_clic" Text="Modificar Paciente" />&nbsp;--%>
+            <asp:Button ID="btn_modificar_paciente" class="btn btn-primary" runat="server" onclick="btn_modificar_clic" Text="Modificar Paciente" />&nbsp;
+            <asp:Button ID="btn_grabar_modificacion_paciente" class="btn btn-primary" runat="server" onclick="btn_grabar_modificacion_paciente_clic" Text="Grabar Paciente" Visible ="false" />&nbsp;
             <asp:Button ID="btn_volver" class="btn btn-primary" runat="server" formnovalidate  onclick="btn_volver_clic" Text="Volver" />                
 
             </div>
@@ -130,7 +136,7 @@
 </div>
 
 
-<div class="panel panel-info" id="div1" runat="server" visible="true">
+<div class="panel panel-info" id="div_detalle_paciente" runat="server" visible="true">
     <div class="panel-heading"><h3 class="panel-title">Detalle del Paciente</h3></div>
     <div class="panel-body">
 
@@ -369,9 +375,7 @@
     </div>
     </div>
 
-
-
-        <div id="analisis_clinicos" class="tabcontent" style="display:none"  >
+<div id="analisis_clinicos" class="tabcontent" style="display:none"  >
         <div class="alert alert-warning alert-dismissable" id="div_alert_analisis_clinicos_error" runat="server" visible="false">
                 <strong>¡Lástima!</strong> Tu Rol no tiene acceso a esta información. 
         </div>
@@ -516,10 +520,6 @@
     </div>
 </div>  
 
-
-
-
-
 <div id="registros_historicos" class="tabcontent" style="display:none"  >
     <div class="alert alert-warning alert-dismissable" id="div_alert_registros_historicos_error" runat="server" visible="false">
             <strong>¡Lástima!</strong> Tu Rol no tiene acceso a esta información. </div>
@@ -605,6 +605,7 @@
         <asp:PostBackTrigger ControlID="btn_volvernueva_licenciaoperacional" />
         <asp:PostBackTrigger ControlID="btn_eliminar_licenciaoperacional" />
         <asp:PostBackTrigger ControlID="btn_modificar_licenciaoperacional" />
+        <asp:PostBackTrigger ControlID="btn_grabar_modificacion_paciente" />
         <asp:AsyncPostBackTrigger ControlID="gvRegistroHistorico" EventName="RowCommand" />
         <asp:AsyncPostBackTrigger ControlID="gvDetalleLicenciaOperacional" EventName="RowCommand" />
         <asp:AsyncPostBackTrigger ControlID="gvNuevaLicenciaOperacional" EventName="RowCommand" />

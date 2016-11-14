@@ -271,6 +271,40 @@ namespace CCHEN_FichaMedica_Negocio
             return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
         }
 
+        public static DataSet ModificarPaciente(Custom.DatosNuevoPaciente dto)
+        {
+            string procedimiento = "RC_SP_upd_Paciente";
+
+            SqlParameter[] dbParams = new SqlParameter[11];
+
+            dbParams[0] = new SqlParameter("@SEDE", SqlDbType.Int);
+            dbParams[0].Value = dto.Sede;
+            dbParams[1] = new SqlParameter("@DEPARTAMENTO", SqlDbType.Int);
+            dbParams[1].Value = dto.Departamento;
+            dbParams[2] = new SqlParameter("@NIVELEDUCACIONAL", SqlDbType.Int);
+            dbParams[2].Value = dto.NivelEducacional;
+            dbParams[3] = new SqlParameter("@ESTADOCIVIL", SqlDbType.Int);
+            dbParams[3].Value = dto.EstadoCivil;
+            dbParams[4] = new SqlParameter("@PREVISION", SqlDbType.Int);
+            dbParams[4].Value = dto.Prevision;
+            dbParams[5] = new SqlParameter("@PROFESION", SqlDbType.VarChar);
+            if (dto.Profesion != "") { dbParams[5].Value = dto.Profesion; } else dbParams[5].Value = null;
+            dbParams[6] = new SqlParameter("@OCUPACION", SqlDbType.VarChar);
+            if (dto.Ocupacion != "") { dbParams[6].Value = dto.Ocupacion; } else dbParams[6].Value = null;
+            dbParams[7] = new SqlParameter("@DIRECCION", SqlDbType.VarChar);
+            if (dto.Direccion != "") { dbParams[7].Value = dto.Direccion; } else dbParams[7].Value = null;
+            dbParams[8] = new SqlParameter("@FONO", SqlDbType.VarChar);
+            if (dto.FonoContacto.ToString() != "") { dbParams[8].Value = dto.FonoContacto; } else dbParams[8].Value = null;
+            dbParams[9] = new SqlParameter("@FONOEMERGENCIA", SqlDbType.VarChar);
+            if (dto.FonoEmergencia.ToString() != "") { dbParams[9].Value = dto.FonoEmergencia; } else dbParams[9].Value = null;
+            dbParams[10] = new SqlParameter("@CONTACTOEMERGENCIA", SqlDbType.VarChar);
+            if (dto.ContactoEmergencia != "") { dbParams[10].Value = dto.ContactoEmergencia; } else dbParams[10].Value = null;
+
+
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+        }
+
+
         public static DataSet NuevoArchivo(Custom.DatosNuevoArchivo dto)
         {
             string procedimiento = "RC_SP_ins_registrohistorico";

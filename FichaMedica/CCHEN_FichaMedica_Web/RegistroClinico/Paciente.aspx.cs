@@ -104,8 +104,8 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
                     ControlDisplayDiv();
                     Buscar_RegistroHistorico(Convert.ToInt32(Request.QueryString["rut"].ToString()));
                     Buscar_LicenciaOperacional( Convert.ToInt32(Request.QueryString["rut"].ToString()) , Convert.ToInt32(Session["RUT_Sesion"].ToString()) );
-                Cargar_AnalisisClinico(Convert.ToInt32(Request.QueryString["rut"].ToString()));
-                Cargar_ConsultaAnalisis();
+                    Cargar_AnalisisClinico(Convert.ToInt32(Request.QueryString["rut"].ToString()));
+                    Cargar_ConsultaAnalisis();
             }
             }
 
@@ -129,6 +129,22 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
 
         protected void btn_modificar_clic(object sender, EventArgs e)
         {
+            btn_grabar_modificacion_paciente.Visible = true;
+            btn_modificar_paciente.Visible = false;
+            div_detalle_paciente.Visible = false;
+
+            lbl_profesion.Attributes.Remove("disabled");
+            lbl_ocupacion.Attributes.Remove("disabled");
+            lbl_direccion.Attributes.Remove("disabled");
+            lbl_contacto_emergencia.Attributes.Remove("disabled");
+            lbl_fono_contacto.Attributes.Remove("disabled");
+            lbl_fono_emergencia.Attributes.Remove("disabled");
+
+            DropDownList_sede_detalle.Attributes.Remove("disabled");
+            DropDownList_prevision_detalle.Attributes.Remove("disabled");
+            DropDownList_departamento_detalle.Attributes.Remove("disabled");
+            DropDownList_estadocivil_detalle.Attributes.Remove("disabled");
+            DropDownList_niveleducacional_detalle.Attributes.Remove("disabled");
 
         }
 
@@ -401,18 +417,185 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             lbl_fecha_nacimiento.Text = Paciente.Tables[0].Rows[0][2].ToString();
             lbl_sexo.Text = Paciente.Tables[0].Rows[0][3].ToString();
             lbl_profesion.Text = Paciente.Tables[0].Rows[0][4].ToString();
-            lbl_nivel_educacional.Text = Paciente.Tables[0].Rows[0][5].ToString();
+            //lbl_nivel_educacional.Text = Paciente.Tables[0].Rows[0][5].ToString();
             lbl_ocupacion.Text = Paciente.Tables[0].Rows[0][6].ToString();
-            lbl_departamento.Text = Paciente.Tables[0].Rows[0][7].ToString();
+            //lbl_departamento.Text = Paciente.Tables[0].Rows[0][7].ToString();
             lbl_direccion.Text = Paciente.Tables[0].Rows[0][8].ToString();
-            lbl_estado_civil.Text = Paciente.Tables[0].Rows[0][9].ToString();
-            lbl_sede.Text = Paciente.Tables[0].Rows[0][10].ToString();
-            lbl_prevision.Text = Paciente.Tables[0].Rows[0][11].ToString();
+            //lbl_estado_civil.Text = Paciente.Tables[0].Rows[0][9].ToString();
+            //lbl_sede.Text = Paciente.Tables[0].Rows[0][10].ToString();
+            //lbl_prevision.Text = Paciente.Tables[0].Rows[0][11].ToString();
             lbl_fono_contacto.Text = Paciente.Tables[0].Rows[0][12].ToString();
             lbl_fono_emergencia.Text = Paciente.Tables[0].Rows[0][13].ToString();
             lbl_contacto_emergencia.Text = Paciente.Tables[0].Rows[0][14].ToString();
             Session["IdRegistroClinico"] = Paciente.Tables[0].Rows[0][15].ToString();
+            Llena_Sede(DropDownList_sede_detalle, Convert.ToInt32(Paciente.Tables[0].Rows[0][10].ToString()));
+            Llena_NivelEducacional(DropDownList_niveleducacional_detalle, Convert.ToInt32(Paciente.Tables[0].Rows[0][5].ToString()));
+            Llena_Departamento(DropDownList_departamento_detalle, Convert.ToInt32(Paciente.Tables[0].Rows[0][7].ToString()));
+            Llena_EstadoCivil(DropDownList_estadocivil_detalle, Convert.ToInt32(Paciente.Tables[0].Rows[0][9].ToString()));
+            Llena_Prevision(DropDownList_prevision_detalle, Convert.ToInt32(Paciente.Tables[0].Rows[0][11].ToString()));
 
+            lbl_rut.Attributes["disabled"] = "disabled";
+            lbl_nombre.Attributes["disabled"] = "disabled";
+            lbl_fecha_nacimiento.Attributes["disabled"] = "disabled";
+            lbl_sexo.Attributes["disabled"] = "disabled";
+
+            lbl_profesion.Attributes["disabled"] = "disabled";
+            lbl_ocupacion.Attributes["disabled"] = "disabled";
+            lbl_direccion.Attributes["disabled"] = "disabled";
+            lbl_fono_contacto.Attributes["disabled"] = "disabled";
+            lbl_fono_emergencia.Attributes["disabled"] = "disabled";
+            lbl_contacto_emergencia.Attributes["disabled"] = "disabled";
+            DropDownList_niveleducacional_detalle.Attributes["disabled"] = "disabled";
+            DropDownList_departamento_detalle.Attributes["disabled"] = "disabled";
+            DropDownList_estadocivil_detalle.Attributes["disabled"] = "disabled";
+            DropDownList_prevision_detalle.Attributes["disabled"] = "disabled";
+            DropDownList_sede_detalle.Attributes["disabled"] = "disabled";
+
+        }
+
+        protected void Llena_Sede(DropDownList Lista, int? sede_id)
+        {
+            Lista.DataSource = CCHEN_FichaMedica_Negocio.RegistroClinico.Sede();
+            Lista.DataTextField = "SEDE";
+            Lista.DataValueField = "ID";
+
+            // Bind the data to the control.
+            Lista.DataBind();
+
+            if (sede_id != null)
+            {
+                ListItem selectedListItem = Lista.Items.FindByValue(sede_id.ToString());
+
+                if (selectedListItem != null)
+                {
+                    selectedListItem.Selected = true;
+                }
+                else Lista.SelectedIndex = 1;
+            }
+
+            else
+            {
+                Lista.Items.Insert(0, new ListItem("-- Seleccione --", "-1"));
+
+                // Set the default selected item, if desired.
+                Lista.SelectedIndex = 0;
+            }
+        }
+
+        protected void Llena_NivelEducacional(DropDownList Lista, int? niveleducacional_id)
+        {
+            Lista.DataSource = CCHEN_FichaMedica_Negocio.RegistroClinico.NivelEducacional();
+            Lista.DataTextField = "NIVELEDUCACIONAL";
+            Lista.DataValueField = "ID";
+
+            // Bind the data to the control.
+            Lista.DataBind();
+
+            if (niveleducacional_id != null)
+            {
+                ListItem selectedListItem = Lista.Items.FindByValue(niveleducacional_id.ToString());
+
+                if (selectedListItem != null)
+                {
+                    selectedListItem.Selected = true;
+                }
+                else Lista.SelectedIndex = 1;
+            }
+
+            else
+            {
+                Lista.Items.Insert(0, new ListItem("-- Seleccione --", "-1"));
+
+                // Set the default selected item, if desired.
+                Lista.SelectedIndex = 0;
+            }
+        }
+
+        protected void Llena_Departamento(DropDownList Lista, int? departamento_id)
+        {
+            Lista.DataSource = CCHEN_FichaMedica_Negocio.RegistroClinico.Departamento();
+            Lista.DataTextField = "DEPARTAMENTO";
+            Lista.DataValueField = "ID";
+
+            // Bind the data to the control.
+            Lista.DataBind();
+
+            if (departamento_id != null)
+            {
+                ListItem selectedListItem = Lista.Items.FindByValue(departamento_id.ToString());
+
+                if (selectedListItem != null)
+                {
+                    selectedListItem.Selected = true;
+                }
+                else Lista.SelectedIndex = 1;
+            }
+
+            else
+            {
+                Lista.Items.Insert(0, new ListItem("-- Seleccione --", "-1"));
+
+                // Set the default selected item, if desired.
+                Lista.SelectedIndex = 0;
+            }
+        }
+
+        protected void Llena_EstadoCivil(DropDownList Lista, int? estadocivil_id)
+        {
+            Lista.DataSource = CCHEN_FichaMedica_Negocio.RegistroClinico.EstadoCivil();
+            Lista.DataTextField = "ESTADOCIVIL";
+            Lista.DataValueField = "ID";
+
+            // Bind the data to the control.
+            Lista.DataBind();
+
+            if (estadocivil_id != null)
+            {
+                ListItem selectedListItem = Lista.Items.FindByValue(estadocivil_id.ToString());
+
+                if (selectedListItem != null)
+                {
+                    selectedListItem.Selected = true;
+                }
+                else Lista.SelectedIndex = 1;
+            }
+
+            else
+            {
+                Lista.Items.Insert(0, new ListItem("-- Seleccione --", "-1"));
+
+                // Set the default selected item, if desired.
+                Lista.SelectedIndex = 0;
+            }
+        }
+
+        protected void Llena_Prevision(DropDownList Lista, int? prevision_id)
+        {
+            Lista.DataSource = CCHEN_FichaMedica_Negocio.RegistroClinico.Prevision();
+            Lista.DataTextField = "PREVISION";
+            Lista.DataValueField = "ID";
+
+            // Bind the data to the control.
+            Lista.DataBind();
+
+            if (prevision_id != null)
+            {
+                ListItem selectedListItem = Lista.Items.FindByValue(prevision_id.ToString());
+
+                if (selectedListItem != null)
+                {
+                    selectedListItem.Selected = true;
+                }
+                else Lista.SelectedIndex = 1;
+            }
+
+            else
+            {
+                Lista.Items.Insert(0, new ListItem("-- Seleccione --", "-1"));
+
+                // Set the default selected item, if desired.
+                Lista.SelectedIndex = 0;
+            }
         }
 
         protected void Buscar_RegistroHistorico(int rut)
@@ -597,6 +780,17 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
                 txt_apreciacion_detalle.Attributes["disabled"] = "disabled";
                 btn_modificar_licenciaoperacional.Visible = false;
                 btn_eliminar_licenciaoperacional.Visible = false;
+
+                foreach (GridViewRow Row in gvDetalleLicenciaOperacional.Rows)
+                {
+                    var apto = Row.FindControl("rb_d_apto") as RadioButton;
+                    var rest = Row.FindControl("rb_d_rest") as RadioButton;
+                    var noapto = Row.FindControl("rb_d_noapto") as RadioButton;
+
+                    apto.Enabled = false;
+                    rest.Enabled = false;
+                    noapto.Enabled = false;
+                }
             }
             else
             {
@@ -1004,6 +1198,28 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             {
                 // Mensaje que hubo un error al guardar.
             }
+        }
+
+
+        protected void btn_grabar_modificacion_paciente_clic(object sender, EventArgs e)
+        {
+            CCHEN_FichaMedica_Negocio.Custom.DatosNuevoPaciente objeto = new CCHEN_FichaMedica_Negocio.Custom.DatosNuevoPaciente();
+
+            objeto.Profesion = lbl_profesion.Text.ToString();
+            objeto.Ocupacion = lbl_ocupacion.Text.ToString();
+            objeto.FonoContacto = lbl_fono_contacto.Text.ToString();
+            objeto.FonoEmergencia = lbl_fono_emergencia.Text.ToString();
+            objeto.ContactoEmergencia = lbl_contacto_emergencia.Text.ToString();
+            objeto.Direccion = lbl_direccion.Text.ToString();
+            objeto.NivelEducacional = Convert.ToInt32(DropDownList_niveleducacional_detalle.SelectedValue.ToString());
+            objeto.Departamento = Convert.ToInt32(DropDownList_departamento_detalle.SelectedValue.ToString());
+            objeto.EstadoCivil = Convert.ToInt32(DropDownList_estadocivil_detalle.SelectedValue.ToString());
+            objeto.Prevision = Convert.ToInt32(DropDownList_prevision_detalle.SelectedValue.ToString());
+            objeto.Sede = Convert.ToInt32(DropDownList_sede_detalle.SelectedValue.ToString());
+
+            DataSet ModificarPaciente = new DataSet();
+            ModificarPaciente = CCHEN_FichaMedica_Negocio.RegistroClinico.ModificarPaciente(objeto);
+            Response.Redirect("Paciente.aspx?rut="+ Session["RutPaciente"].ToString());
         }
     }
 }

@@ -161,6 +161,9 @@
     <Content Include="RegistroClinico\NuevoPaciente.aspx" />
     <Content Include="RegistroClinico\Paciente.aspx" />
     <Content Include="RegistroClinico\RegistroClinico.aspx" />
+    <Content Include="RegistroClinico\Upload\Laboratorio\16626344\1\Chrysanthemum.jpg" />
+    <Content Include="RegistroClinico\Upload\Laboratorio\16626344\1\Lighthouse.jpg" />
+    <Content Include="RegistroClinico\Upload\Laboratorio\16768139\1\Desert.jpg" />
     <Content Include="Salir.aspx" />
     <Content Include="SesionExpirada.aspx" />
     <Content Include="Styles\Site.css" />

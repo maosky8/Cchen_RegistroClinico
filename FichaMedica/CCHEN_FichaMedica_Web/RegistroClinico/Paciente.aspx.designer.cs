@@ -112,13 +112,13 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.TextBox lbl_profesion;
         
         /// <summary>
-        /// Control lbl_nivel_educacional.
+        /// Control DropDownList_niveleducacional_detalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lbl_nivel_educacional;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_niveleducacional_detalle;
         
         /// <summary>
         /// Control lbl_ocupacion.
@@ -130,13 +130,13 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.TextBox lbl_ocupacion;
         
         /// <summary>
-        /// Control lbl_departamento.
+        /// Control DropDownList_departamento_detalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lbl_departamento;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_departamento_detalle;
         
         /// <summary>
         /// Control lbl_direccion.
@@ -148,31 +148,31 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.TextBox lbl_direccion;
         
         /// <summary>
-        /// Control lbl_estado_civil.
+        /// Control DropDownList_estadocivil_detalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lbl_estado_civil;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_estadocivil_detalle;
         
         /// <summary>
-        /// Control lbl_sede.
+        /// Control DropDownList_sede_detalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lbl_sede;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_sede_detalle;
         
         /// <summary>
-        /// Control lbl_prevision.
+        /// Control DropDownList_prevision_detalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lbl_prevision;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_prevision_detalle;
         
         /// <summary>
         /// Control lbl_fono_contacto.
@@ -202,6 +202,24 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.TextBox lbl_contacto_emergencia;
         
         /// <summary>
+        /// Control btn_modificar_paciente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_modificar_paciente;
+        
+        /// <summary>
+        /// Control btn_grabar_modificacion_paciente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_grabar_modificacion_paciente;
+        
+        /// <summary>
         /// Control btn_volver.
         /// </summary>
         /// <remarks>
@@ -211,13 +229,13 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.Button btn_volver;
         
         /// <summary>
-        /// Control div1.
+        /// Control div_detalle_paciente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_detalle_paciente;
         
         /// <summary>
         /// Control div_alert_historial_atenciones_error.
