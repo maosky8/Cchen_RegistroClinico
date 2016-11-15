@@ -10,17 +10,30 @@ namespace CCHEN_FichaMedica_Web
 {
     public partial class SiteMaster : System.Web.UI.MasterPage
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Session["UserName"] != null)
                 {
                     lblUsuario.Text = Session["UserName"].ToString();
-                    /*if (Int32.Parse(Session["Menu"].ToString()) != 1) */ 
+                    /*if (Int32.Parse(Session["Menu"].ToString()) != 1) */
                     CargaMenu(lblUsuario.Text);
                 }
                 else Response.Redirect("~/SesionExpirada.aspx");
+            }
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                //if (Session["UserName"] != null)
+                //{
+                //    lblUsuario.Text = Session["UserName"].ToString();
+                //    /*if (Int32.Parse(Session["Menu"].ToString()) != 1) */ 
+                //    CargaMenu(lblUsuario.Text);
+                //}
+                //else Response.Redirect("~/SesionExpirada.aspx");
 
             }
         }

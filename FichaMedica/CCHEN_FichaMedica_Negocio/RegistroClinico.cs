@@ -392,6 +392,18 @@ namespace CCHEN_FichaMedica_Negocio
             return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
         }
 
+        public static DataSet EliminarAnalisisClinico(int idAnalisisClinico)
+        {
+            string procedimiento = "RC_SP_del_AnalisisClinico";
+
+            SqlParameter[] dbParams = new SqlParameter[1];
+
+            dbParams[0] = new SqlParameter("@ID", SqlDbType.Int);
+            dbParams[0].Value = idAnalisisClinico;
+
+            return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);
+        }
+
         public static DataSet ModificarLicenciaOperacional(int idlicenciaoperacional, int dias, int estado, string apreciacion)
         {
             string procedimiento = "RC_SP_upd_licenciaoperacional";

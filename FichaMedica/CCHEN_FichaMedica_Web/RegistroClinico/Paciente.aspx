@@ -68,12 +68,18 @@
 <script language="javascript" type="text/javascript">
 
         function EliminarLicenciaOperacional() {
-            if (confirm("¿Está seguro que desea eliminar la Licencia Operacional?"))
+            if (confirm("¿Está seguro que desea eliminar la Licencia Operacional seleccionada?"))
                 return true;
             else
                 return false;
         }
 
+        function EliminarAnalisisClinico() {
+            if (confirm("¿Está seguro que desea eliminar el Análisis Clínico seleccionado?"))
+                return true;
+            else
+                return false;
+        }
 
     </script> 
 
@@ -258,7 +264,12 @@
     <div id="div_nueva_licenciaoperacional" runat="server" visible="false">
 
         <div class="alert alert-warning alert-dismissable" id="div_alert_examen_vacio" runat="server" visible="false">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>¡Hey!</strong> Debes indicar la aptitud de al menos 1 exámen físico. </div>
+
+        <div class="alert alert-warning alert-dismissable" id="div_alert_nueva_licope_vacio" runat="server" visible="false">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>¡Hey!</strong> Debes completar todos los campos antes de Grabar. </div>
 
     <asp:GridView   CssClass="table table-striped" 
             ID="gvNuevaLicenciaOperacional" 
@@ -288,20 +299,20 @@
                     </Columns>
                 </asp:GridView>
             <div class="col-sm-3"><label for="inputName" class="control-label">Fecha Inicio Licencia :</label></div>
-            <div class="col-sm-3"><asp:TextBox id="txt_fechainicio_nueva_lo" runat="server" class="form-control" type="date" name="fechainicio" step="1" min="2016-01-01" required></asp:TextBox></div>
+            <div class="col-sm-3"><asp:TextBox id="txt_fechainicio_nueva_lo" runat="server" class="form-control" type="date" name="fechainicio" step="1" min="2016-01-01" ></asp:TextBox></div>
 
             <div class="col-sm-3"><label for="inputName" class="control-label">Fecha Término Licencia :</label></div>
-            <div class="col-sm-3"><asp:TextBox id="txt_fechatermino_nueva_lo" runat="server" class="form-control" type="date" name="fechatermino" step="1" min="2016-01-01" required></asp:TextBox></div>
+            <div class="col-sm-3"><asp:TextBox id="txt_fechatermino_nueva_lo" runat="server" class="form-control" type="date" name="fechatermino" step="1" min="2016-01-01" ></asp:TextBox></div>
 
             <div class="col-sm-3"><label for="inputName" class="control-label" >Dias de Licencia :</label></div>
-            <div class="col-sm-3"><asp:TextBox id="txt_dias_nueva_lo" type="number" runat="server" MaxLength="11" class="form-control" required></asp:TextBox></div>
+            <div class="col-sm-3"><asp:TextBox id="txt_dias_nueva_lo" type="number" runat="server" MaxLength="11" class="form-control" ></asp:TextBox></div>
 
             <div class="col-sm-3"><label for="inputName" class="control-label">Estado Licencia:</label></div>
             <div class="col-sm-3"><asp:DropDownList ID="DropDownList_EstadoLicencia" runat="server" class="form-control"
                     onselectedindexchanged="DropDownList_EstadoLicencia_SelectedIndexChanged"></asp:DropDownList></div>
 
             <div class="col-sm-3"><label for="inputName" class="control-label">Apreciación del Médico :</label></div>
-            <div class="col-sm-3"><asp:TextBox id="txt_apreciacion_nueva_lo" style="Z-INDEX: 501; OVERFLOW: hidden;  " runat="server" TextMode="MultiLine" class="form-control" required></asp:TextBox></div>  
+            <div class="col-sm-3"><asp:TextBox id="txt_apreciacion_nueva_lo" style="Z-INDEX: 501; OVERFLOW: hidden;  " runat="server" TextMode="MultiLine" class="form-control" ></asp:TextBox></div>  
 
             
     <div>&nbsp;</div><div>&nbsp;</div>
@@ -313,6 +324,11 @@
     <div>&nbsp;</div>
 
     <div id="div_detalle_licenciaoperacional" runat="server" visible="false">
+
+        <div class="alert alert-warning alert-dismissable" id="div_alert_editar_licope_vacio" runat="server" visible="false">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>¡Hey!</strong> Debes completar todos los campos antes de Grabar. </div>
+
     <div class="panel-heading"><h3 class="panel-title"><asp:Label ID="lbl_detalle_licencia_operacional" runat="server" Text=""></asp:Label></h3></div>
         <asp:GridView   CssClass="table table-striped" 
             ID="gvDetalleLicenciaOperacional" 
@@ -347,20 +363,20 @@
            
 
             <div class="col-sm-3"><label for="inputName" class="control-label">Fecha Inicio Licencia :</label></div>
-            <div class="col-sm-3"><asp:TextBox id="txt_fechaini_detalle" runat="server" class="form-control"  disabled></asp:TextBox></div>
+            <div class="col-sm-3"><asp:TextBox id="txt_fechaini_detalle" runat="server" class="form-control"  ReadOnly ></asp:TextBox></div>
 
             <div class="col-sm-3"><label for="inputName" class="control-label">Fecha Término Licencia :</label></div>
-            <div class="col-sm-3"><asp:TextBox id="txt_fechafin_detalle" runat="server" class="form-control"  disabled></asp:TextBox></div>
+            <div class="col-sm-3"><asp:TextBox id="txt_fechafin_detalle" runat="server" class="form-control"  ReadOnly></asp:TextBox></div>
 
             <div class="col-sm-3"><label for="inputName" class="control-label" >Dias de Licencia :</label></div>
-            <div class="col-sm-3"><asp:TextBox id="txt_dias_detalle" type="number" runat="server" MaxLength="11" class="form-control" required></asp:TextBox></div>
+            <div class="col-sm-3"><asp:TextBox id="txt_dias_detalle" type="number" runat="server" MaxLength="11" class="form-control" ></asp:TextBox></div>
 
             <div class="col-sm-3"><label for="inputName" class="control-label">Estado Licencia:</label></div>
             <div class="col-sm-3"><asp:DropDownList ID="DropDownList_estadolicencia_detalle" runat="server" class="form-control"
                     ></asp:DropDownList></div>
 
             <div class="col-sm-3"><label for="inputName" class="control-label">Apreciación del Médico :</label></div>
-            <div class="col-sm-3"><asp:TextBox id="txt_apreciacion_detalle" style="Z-INDEX: 501; OVERFLOW: hidden;  " runat="server" TextMode="MultiLine" class="form-control" required></asp:TextBox></div>  
+            <div class="col-sm-3"><asp:TextBox id="txt_apreciacion_detalle" style="Z-INDEX: 501; OVERFLOW: hidden;  " runat="server" TextMode="MultiLine" class="form-control" ></asp:TextBox></div>  
 
 
     <div>&nbsp;</div><div>&nbsp;</div>
@@ -417,7 +433,7 @@
                      <div class="panel-body">  
                 <asp:GridView ID="gvAnalisisLab" CssClass="table table-striped" 
                     AutoGenerateColumns="False" 
-                    Width="100%" DataKeyNames="ID, Id_AnalisisLab, Resultado, Unidad, idEstado, NombreArchivo, Ruta, Tamano, Lugar"
+                    Width="100%" DataKeyNames="ID, Id_AnalisisLab, Resultado, Unidad, idEstado, NombreArchivo, Ruta, Tamano, Lugar, Fecha"
                     runat="server" OnRowCommand="gvAnalisisLab_RowCommand">
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" Visible="false" ItemStyle-Width="0%"></asp:BoundField>
@@ -468,39 +484,61 @@
         <div class="col-sm-3"><label for="inputName" class="control-label">Análisis de Laboratorio:</label></div>
         <div class="col-sm-3"><asp:DropDownList ID="ddl_AnalisisLab" runat="server" class="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddl_AnalisisLab_SelectedIndexChanged"></asp:DropDownList></div>
         <div class="col-sm-3"><label for="inputName" class="control-label">Fecha :</label></div>
-        <div class="col-sm-3"><asp:TextBox id="tb_fecha" runat="server" class="form-control" type="date" step="1" min="2016-01-01" required></asp:TextBox></div>
+        <div class="col-sm-3"><asp:TextBox id="tb_fecha" runat="server" class="form-control" type="date" step="1" min="2016-01-01" ></asp:TextBox></div>
 
         <div class="col-sm-3"><label for="inputName" class="control-label">Resultado :</label></div>
-        <div class="col-sm-3"><asp:TextBox id="tb_resultado" runat="server" class="form-control" required></asp:TextBox></div>
+        <div class="col-sm-3"><asp:TextBox id="tb_resultado" runat="server" class="form-control" ></asp:TextBox></div>
         <div class="col-sm-6"><asp:Label id="lbl_unidad_medida" runat="server" class="form-control" BorderStyle="None"></asp:Label></div>
 
         <div class="col-sm-3"><label for="inputName" class="control-label">Lugar de Realización :</label></div>
-        <div class="col-sm-3"><asp:TextBox id="tb_lugarRealizacion" runat="server" class="form-control" required></asp:TextBox></div>
+        <div class="col-sm-3"><asp:TextBox id="tb_lugarRealizacion" runat="server" class="form-control" ></asp:TextBox></div>
         <div class="col-sm-6">
-            <asp:FileUpload runat="server" ID="fu_examen" AllowMultiple="false" class="btn btn-info" required />
+            <asp:FileUpload runat="server" ID="fu_examen" AllowMultiple="false" class="btn btn-info"  />
         </div>
-<div>&nbsp;</div><div>&nbsp;</div>
+<div>&nbsp;</div>
+                 
+    <div class="alert alert-warning alert-dismissable" id="div_alert_nuevo_analisislab_vacio" runat="server" visible="false">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>¡Hey!</strong> Debes completar todos los campos antes de Grabar. </div>
+
+                 <div>&nbsp;</div>
         <div class="col-sm-12" align="center"><asp:Button ID="btn_Ingresar" runat="server" Text="Grabar Nuevo Análisis de Laboratorio" class="btn btn-primary" OnClick="btn_Ingresar_Click"/></div>
 </div></div>
 
+        <div class="alert alert-warning alert-dismissable" id="div_alert_editar_analisislab_vacio" runat="server" visible="false">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>¡Hey!</strong> Debes completar todos los campos antes de Grabar. </div>
+
+        <div class="alert alert-success" id="div_alert_edit_exito" runat="server" visible="false">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>¡Bien hecho!</strong> El Análisis Clínico se ha modificado correctamente. 
+                                    </div>
+
+        <div class="alert alert-success" id="div_alert_eliminar_exito" runat="server" visible="false">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>¡Bien hecho!</strong> El Análisis Clínico se ha eliminado correctamente. 
+                                    </div>
          
         <div class="panel panel-info" id="div_detalle_analisis" runat="server" visible="false">
                             <div class="panel-heading"><h3 class="panel-title">Detalle Análisis de Laboratorio</h3></div>
                             <div class="panel-body">
                                 <div id="div_edit_form" class="form-group" runat="server">
                                     <div class="col-sm-3"><label for="inputName" class="control-label">Análisis de Laboratorio:</label></div>
-                                    <div class="col-sm-3"><asp:DropDownList ID="ddl_edit_analisisLab" runat="server" class="form-control" AutoPostBack="True"></asp:DropDownList></div>
+                                    <div class="col-sm-3"><asp:DropDownList ID="ddl_edit_analisisLab" runat="server" class="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddl_AnalisisLab_edit_SelectedIndexChanged"></asp:DropDownList></div>
 
                                     <div class="col-sm-3"><label for="inputName" class="control-label">Fecha :</label></div>
-                                    <div class="col-sm-3"><asp:TextBox id="tb_edit_fecha" runat="server" class="form-control" type="date" step="1" min="2016-01-01" required ></asp:TextBox></div>
+                                    <div class="col-sm-3"><asp:TextBox id="tb_edit_fecha" runat="server" class="form-control" type="date" step="1" min="2016-01-01"  ></asp:TextBox>
+                                                          <asp:TextBox id="tb_edit_fecha_cerrada" runat="server" class="form-control" visible="false" ReadOnly ></asp:TextBox>
+                                                          </div>
 
                                     <div class="col-sm-3"><label for="inputName" class="control-label">Resultado :</label></div>
-                                    <div class="col-sm-3"><asp:TextBox id="tb_edit_resultado" runat="server" class="form-control" required></asp:TextBox></div>
-
-                                    <div class="col-sm-6"><asp:TextBox id="lb_edit_resultado" runat="server"  class="form-control" disabled ></asp:TextBox></div>
+                                    <div class="col-sm-3"><asp:TextBox id="tb_edit_resultado" runat="server" class="form-control" ></asp:TextBox></div>
+                                    
+                                    <div class="col-sm-3"><label for="inputName" class="control-label">Unidad de medida :</label></div>
+                                    <div class="col-sm-3"><asp:TextBox id="lb_edit_resultado" runat="server"  class="form-control" ReadOnly ></asp:TextBox></div>
 
                                     <div class="col-sm-3"><label for="inputName" class="control-label">Lugar de Realización :</label></div>
-                                    <div class="col-sm-3"><asp:TextBox id="tb_edit_lugar" runat="server" class="form-control" required></asp:TextBox></div>
+                                    <div class="col-sm-3"><asp:TextBox id="tb_edit_lugar" runat="server" class="form-control" ></asp:TextBox></div>
 
                                     <div class="col-sm-3"><label for="inputName" class="control-label">Estado :</label></div>
                                     <div class="col-sm-3"><asp:DropDownList ID="ddl_edit_estado" runat="server" CssClass="form-control"></asp:DropDownList></div>
@@ -508,18 +546,16 @@
                                    <%-- <asp:Label ID="lb_mensaje_edit" ForeColor="Red" Text="ESCOJA UN NUEVO ARCHIVO PARA REEMPLAZAR EL ANTERIOR." runat="server"> </asp:Label>--%>
 
                                     <div class="col-sm-3"><label for="inputName" class="control-label">Archivo :</label></div>
-                                    <div class="col-sm-3"><asp:TextBox ID="lb_edit_nombreArchivo" runat="server" CssClass="form-control" disabled> </asp:TextBox></div>
+                                    <div class="col-sm-3"><asp:TextBox ID="lb_edit_nombreArchivo" runat="server" CssClass="form-control" ReadOnly > </asp:TextBox></div>
                                     <div class="col-sm-6">
-                                        <asp:FileUpload runat="server" ID="fu_edit_examen" AllowMultiple="false" class="btn btn-info"  required />
+                                        <%--<asp:FileUpload runat="server" ID="fu_edit_examen" AllowMultiple="false" class="btn btn-info"   />--%>
                                     </div>
                                     <div>&nbsp;</div><div>&nbsp;</div>
                                     <div class="col-sm-12" align="center"><asp:Button ID="btn_edit_editar" runat="server" Text="Grabar Análisis Clínico" class="btn btn-primary" OnClick="btn_edit_editar_Click" />
-                                        &nbsp;<asp:Button ID="btn_edit_eliminar" runat="server" Text="Eliminar Análisis Clínico" class="btn btn-primary" OnClick="btn_edit_eliminar_Click" formnovalidate />
+                                        &nbsp;<asp:Button ID="btn_edit_eliminar" runat="server" Text="Eliminar Análisis Clínico" class="btn btn-primary" OnClick="btn_edit_eliminar_Click" OnClientClick="return EliminarAnalisisClinico();" formnovalidate />
                                     </div>
-                                    <div class="alert alert-success" id="div_edit_exito" runat="server" visible="false">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>¡Bien hecho!</strong> El archivo se ha cargado correctamente. 
-                                    </div>
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
@@ -583,7 +619,9 @@
             </div>
                     <div class="col-sm-12" align="center">
                         <asp:FileUpload runat="server" ID="SubirArchivos" AllowMultiple="false" class="btn btn-info" />
-                        
+                       </div> 
+                                    <div>&nbsp;</div><div>&nbsp;</div>
+                    <div class="col-sm-12" align="center">
             <asp:Button ID="btn_subir_registrohistorico" class="btn btn-primary" runat="server" onclick="btn_subir_registrohistorico_clic" Text="Subir Archivo"  />
             </div>
 

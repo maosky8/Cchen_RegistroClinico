@@ -373,6 +373,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_examen_vacio;
         
         /// <summary>
+        /// Control div_alert_nueva_licope_vacio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_nueva_licope_vacio;
+        
+        /// <summary>
         /// Control gvNuevaLicenciaOperacional.
         /// </summary>
         /// <remarks>
@@ -452,6 +461,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_detalle_licenciaoperacional;
+        
+        /// <summary>
+        /// Control div_alert_editar_licope_vacio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_editar_licope_vacio;
         
         /// <summary>
         /// Control lbl_detalle_licencia_operacional.
@@ -715,6 +733,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.FileUpload fu_examen;
         
         /// <summary>
+        /// Control div_alert_nuevo_analisislab_vacio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_nuevo_analisislab_vacio;
+        
+        /// <summary>
         /// Control btn_Ingresar.
         /// </summary>
         /// <remarks>
@@ -722,6 +749,33 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_Ingresar;
+        
+        /// <summary>
+        /// Control div_alert_editar_analisislab_vacio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_editar_analisislab_vacio;
+        
+        /// <summary>
+        /// Control div_alert_edit_exito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_edit_exito;
+        
+        /// <summary>
+        /// Control div_alert_eliminar_exito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_eliminar_exito;
         
         /// <summary>
         /// Control div_detalle_analisis.
@@ -758,6 +812,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_edit_fecha;
+        
+        /// <summary>
+        /// Control tb_edit_fecha_cerrada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_edit_fecha_cerrada;
         
         /// <summary>
         /// Control tb_edit_resultado.
@@ -805,15 +868,6 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.TextBox lb_edit_nombreArchivo;
         
         /// <summary>
-        /// Control fu_edit_examen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fu_edit_examen;
-        
-        /// <summary>
         /// Control btn_edit_editar.
         /// </summary>
         /// <remarks>
@@ -830,15 +884,6 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_edit_eliminar;
-        
-        /// <summary>
-        /// Control div_edit_exito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_edit_exito;
         
         /// <summary>
         /// Control div_alert_registros_historicos_error.

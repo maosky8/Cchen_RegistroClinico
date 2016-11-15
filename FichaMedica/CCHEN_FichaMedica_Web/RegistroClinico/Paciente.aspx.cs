@@ -20,7 +20,8 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
         #region variables
         private static int _ArchivoSeleccionado = 0;
         private static int _LicenciaSeleccionada = 0;
-        
+        private static int _AnalisisSeleccionado = 0;
+
         public DataTable TableRegistroHistorico
         {
             get
@@ -239,15 +240,23 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
 
         protected void btn_modificar_licenciaoperacional_clic(object sender, EventArgs e)
         {
-            DataSet ModLicOpe = new DataSet();
-            ModLicOpe = CCHEN_FichaMedica_Negocio.RegistroClinico.ModificarLicenciaOperacional(_LicenciaSeleccionada, Convert.ToInt32(txt_dias_detalle.Text.ToString()), Convert.ToInt32(DropDownList_estadolicencia_detalle.SelectedValue.ToString()), txt_apreciacion_detalle.Text.ToString());
+            if (txt_dias_detalle.Text.ToString() != "" && txt_apreciacion_detalle.Text.ToString() != "")
+            {
+                DataSet ModLicOpe = new DataSet();
+                ModLicOpe = CCHEN_FichaMedica_Negocio.RegistroClinico.ModificarLicenciaOperacional(_LicenciaSeleccionada, Convert.ToInt32(txt_dias_detalle.Text.ToString()), Convert.ToInt32(DropDownList_estadolicencia_detalle.SelectedValue.ToString()), txt_apreciacion_detalle.Text.ToString());
 
-            ControlAlert();
-            Buscar_LicenciaOperacional(Convert.ToInt32(Request.QueryString["rut"].ToString()), Convert.ToInt32(Session["RUT_Sesion"].ToString()));
-            div_nueva_licenciaoperacional.Visible = false;
-            div_resultado_licenciaoperacional.Visible = true;
-            div_detalle_licenciaoperacional.Visible = false;
-            div_alert_modificarlicope_ok.Visible = true;
+                ControlAlert();
+                Buscar_LicenciaOperacional(Convert.ToInt32(Request.QueryString["rut"].ToString()), Convert.ToInt32(Session["RUT_Sesion"].ToString()));
+                div_nueva_licenciaoperacional.Visible = false;
+                div_resultado_licenciaoperacional.Visible = true;
+                div_detalle_licenciaoperacional.Visible = false;
+                div_alert_modificarlicope_ok.Visible = true;
+            }
+            else
+            {
+                ControlAlert();
+                div_alert_editar_licope_vacio.Visible = true;
+            }
         }
 
         protected void btn_eliminar_licenciaoperacional_clic(object sender, EventArgs e)
@@ -293,38 +302,50 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
 
                 if (examenchequeado != 0)
                 {
-                    CCHEN_FichaMedica_Negocio.Custom.DatosNuevaLicenciaOperacional objeto = new CCHEN_FichaMedica_Negocio.Custom.DatosNuevaLicenciaOperacional();
-
-                    objeto.FechaRegistro = DateTime.Now.ToShortDateString();
-                    objeto.FechaInicio = Convert.ToDateTime(txt_fechainicio_nueva_lo.Text).ToShortDateString();
-                    objeto.FechaFin = Convert.ToDateTime(txt_fechatermino_nueva_lo.Text).ToShortDateString();
-                    objeto.Dias = Convert.ToInt32(txt_dias_nueva_lo.Text.ToString());
-                    objeto.Apreciacion = txt_apreciacion_nueva_lo.Text.ToString();
-                    objeto.EstadoLicenciaOperacional = Convert.ToInt32(DropDownList_EstadoLicencia.SelectedValue.ToString());
-                    objeto.RegistroClinicoID = Convert.ToInt32(Session["IdRegistroClinico"].ToString());
-
-
-                    DataSet LicenciaOperacional = new DataSet();
-                    LicenciaOperacional = CCHEN_FichaMedica_Negocio.RegistroClinico.NuevaLicenciaOperacional(objeto);
-                    int nueva_LicOpe = Convert.ToInt32(LicenciaOperacional.Tables[0].Rows[0][0].ToString());
-
-                    foreach (GridViewRow Row in gvNuevaLicenciaOperacional.Rows)
+                    if (txt_fechainicio_nueva_lo.Text.ToString() != "" &&
+                       txt_fechatermino_nueva_lo.Text.ToString() != "" &&
+                       txt_dias_nueva_lo.Text.ToString() != "" &&
+                       txt_apreciacion_nueva_lo.Text.ToString() != "")
                     {
-                        //int idExamen = (int)System.Web.UI.DataBinder.Eval(Row.DataItem, "IDExamen");
-                        var apto = Row.FindControl("rb_apto") as RadioButton;
-                        var rest = Row.FindControl("rb_rest") as RadioButton;
-                        var noapto = Row.FindControl("rb_noapto") as RadioButton;
-                        int idExamen = Convert.ToInt32(gvNuevaLicenciaOperacional.DataKeys[Row.RowIndex].Values[0].ToString());
-                        if (apto.Checked) GrabarLicOpeExamenFisico(nueva_LicOpe, idExamen, 1);
-                        if (rest.Checked) GrabarLicOpeExamenFisico(nueva_LicOpe, idExamen, 2);
-                        if (noapto.Checked) GrabarLicOpeExamenFisico(nueva_LicOpe, idExamen, 3);
+
+                        CCHEN_FichaMedica_Negocio.Custom.DatosNuevaLicenciaOperacional objeto = new CCHEN_FichaMedica_Negocio.Custom.DatosNuevaLicenciaOperacional();
+
+                        objeto.FechaRegistro = DateTime.Now.ToShortDateString();
+                        objeto.FechaInicio = Convert.ToDateTime(txt_fechainicio_nueva_lo.Text).ToShortDateString();
+                        objeto.FechaFin = Convert.ToDateTime(txt_fechatermino_nueva_lo.Text).ToShortDateString();
+                        objeto.Dias = Convert.ToInt32(txt_dias_nueva_lo.Text.ToString());
+                        objeto.Apreciacion = txt_apreciacion_nueva_lo.Text.ToString();
+                        objeto.EstadoLicenciaOperacional = Convert.ToInt32(DropDownList_EstadoLicencia.SelectedValue.ToString());
+                        objeto.RegistroClinicoID = Convert.ToInt32(Session["IdRegistroClinico"].ToString());
+
+
+                        DataSet LicenciaOperacional = new DataSet();
+                        LicenciaOperacional = CCHEN_FichaMedica_Negocio.RegistroClinico.NuevaLicenciaOperacional(objeto);
+                        int nueva_LicOpe = Convert.ToInt32(LicenciaOperacional.Tables[0].Rows[0][0].ToString());
+
+                        foreach (GridViewRow Row in gvNuevaLicenciaOperacional.Rows)
+                        {
+                            //int idExamen = (int)System.Web.UI.DataBinder.Eval(Row.DataItem, "IDExamen");
+                            var apto = Row.FindControl("rb_apto") as RadioButton;
+                            var rest = Row.FindControl("rb_rest") as RadioButton;
+                            var noapto = Row.FindControl("rb_noapto") as RadioButton;
+                            int idExamen = Convert.ToInt32(gvNuevaLicenciaOperacional.DataKeys[Row.RowIndex].Values[0].ToString());
+                            if (apto.Checked) GrabarLicOpeExamenFisico(nueva_LicOpe, idExamen, 1);
+                            if (rest.Checked) GrabarLicOpeExamenFisico(nueva_LicOpe, idExamen, 2);
+                            if (noapto.Checked) GrabarLicOpeExamenFisico(nueva_LicOpe, idExamen, 3);
+                        }
+                        ControlAlert();
+                        Buscar_LicenciaOperacional(Convert.ToInt32(Request.QueryString["rut"].ToString()), Convert.ToInt32(Session["RUT_Sesion"].ToString()));
+                        div_nueva_licenciaoperacional.Visible = false;
+                        div_resultado_licenciaoperacional.Visible = true;
+                        div_detalle_licenciaoperacional.Visible = false;
+                        div_alert_nuevalicope_ok.Visible = true;
                     }
-                    ControlAlert();
-                    Buscar_LicenciaOperacional(Convert.ToInt32(Request.QueryString["rut"].ToString()), Convert.ToInt32(Session["RUT_Sesion"].ToString()));
-                    div_nueva_licenciaoperacional.Visible = false;
-                    div_resultado_licenciaoperacional.Visible = true;
-                    div_detalle_licenciaoperacional.Visible = false;
-                    div_alert_nuevalicope_ok.Visible = true;
+                    else
+                    {
+                        ControlAlert();
+                        div_alert_nueva_licope_vacio.Visible = true;
+                    }
                 }
                 else
                 {
@@ -403,6 +424,12 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             div_alert_modificarlicope_ok.Visible = false;
             div_alert_busqueda_analisislab_error.Visible = false;
             div_alert_analisis_clinicos_exito.Visible = false;
+            div_alert_nueva_licope_vacio.Visible = false;
+            div_alert_editar_licope_vacio.Visible = false;
+            div_alert_nuevo_analisislab_vacio.Visible = false;
+            div_alert_editar_analisislab_vacio.Visible = false;
+            div_alert_edit_exito.Visible = false;
+            div_alert_eliminar_exito.Visible = false;
         }
 
 
@@ -697,6 +724,11 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             div_resultado_licenciaoperacional.Visible = false;
             div_detalle_licenciaoperacional.Visible = false;
 
+            txt_fechainicio_nueva_lo.Text = "";
+            txt_fechatermino_nueva_lo.Text = "";
+            txt_dias_nueva_lo.Text = "";
+            txt_apreciacion_nueva_lo.Text = "";
+
             IList<CCHEN_FichaMedica_Negocio.Custom.DatosNuevoExamen> Lista = CCHEN_FichaMedica_Negocio.RegistroClinico.ObtenerNuevoExamenFisico();
 
             if (Lista == null || Lista.Count == 0)
@@ -931,49 +963,57 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
         //ERIC
         protected void btn_Ingresar_Click(object sender, EventArgs e)
         {
-            int id = CCHEN_FichaMedica_Negocio.Paciente.ObtenerIdRegistroClinico(Int32.Parse(Session["RutPaciente"].ToString()));
-            int analisis = Int32.Parse(ddl_AnalisisLab.SelectedValue);
-            DateTime fechaAnalisis = DateTime.Parse(tb_fecha.Text);
-            string resultado = tb_resultado.Text;
-            string unidad = lbl_unidad_medida.Text;
-            string lugar = tb_lugarRealizacion.Text;
-            int estado = 1; // Iniciado
-            string nombreArchivo = "";
-            string extArchivo = "";
-            byte[] archivo = null;
-            string ruta = "";
-            int tamano = 0;
-            bool exito = false;
-
-            try
+            if (fu_examen.HasFile && tb_fecha.Text.ToString() != "" && tb_resultado.Text.ToString() != "" && tb_lugarRealizacion.Text.ToString() != "")
             {
-                if (fu_examen.HasFile)
+                int id = CCHEN_FichaMedica_Negocio.Paciente.ObtenerIdRegistroClinico(Int32.Parse(Session["RutPaciente"].ToString()));
+                int analisis = Int32.Parse(ddl_AnalisisLab.SelectedValue);
+                DateTime fechaAnalisis = DateTime.Parse(tb_fecha.Text);
+                string resultado = tb_resultado.Text;
+                string unidad = lbl_unidad_medida.Text;
+                string lugar = tb_lugarRealizacion.Text;
+                int estado = 1; // Iniciado
+                string nombreArchivo = "";
+                string extArchivo = "";
+                byte[] archivo = null;
+                string ruta = "";
+                int tamano = 0;
+                bool exito = false;
+
+                try
                 {
-                    // Verificar que coincida con los formatos.
-                    string ext = fu_examen.PostedFile.FileName;
-                    ext = ext.Substring(ext.LastIndexOf(".") + 1).ToLower();
-                    string[] formatos = new string[] { "jpg", "jpeg", "bmp", "png", "gif", "pdf", "doc", "docx" };
-                    if (Array.IndexOf(formatos, ext) < 0)
+                    if (fu_examen.HasFile)
                     {
-                        // Mensaje de que el formato no es válido.
+                        // Verificar que coincida con los formatos.
+                        string ext = fu_examen.PostedFile.FileName;
+                        ext = ext.Substring(ext.LastIndexOf(".") + 1).ToLower();
+                        string[] formatos = new string[] { "jpg", "jpeg", "bmp", "png", "gif", "pdf", "doc", "docx" };
+                        if (Array.IndexOf(formatos, ext) < 0)
+                        {
+                            // Mensaje de que el formato no es válido.
+                        }
+                        else
+                        {
+                            nombreArchivo = fu_examen.PostedFile.FileName.Substring(0, fu_examen.PostedFile.FileName.LastIndexOf("."));
+                            extArchivo = ext;
+                            archivo = new byte[fu_examen.PostedFile.InputStream.Length];
+                            fu_examen.PostedFile.InputStream.Read(archivo, 0, archivo.Length);
+                            ruta = Server.MapPath("Upload/Laboratorio/" + Session["RutPaciente"].ToString());
+                            tamano = fu_examen.PostedFile.ContentLength;
+                            exito = true;
+                        }
                     }
                     else
                     {
-                        nombreArchivo = fu_examen.PostedFile.FileName.Substring(0, fu_examen.PostedFile.FileName.LastIndexOf("."));
-                        extArchivo = ext;
-                        archivo = new byte[fu_examen.PostedFile.InputStream.Length];
-                        fu_examen.PostedFile.InputStream.Read(archivo, 0, archivo.Length);
-                        ruta = Server.MapPath("Upload/Laboratorio/" + Session["RutPaciente"].ToString());
-                        tamano = fu_examen.PostedFile.ContentLength;
-                        exito = true;
+                        ControlAlert();
+
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                // Mensaje de que hubo un error al subir.
-                return;
-            }
+                catch (Exception ex)
+                {
+                    // Mensaje de que hubo un error al subir.
+                    return;
+                }
+            
 
             if (exito)
             {
@@ -1019,6 +1059,12 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             {
 
             }
+            }
+            else
+            {
+                ControlAlert();
+                div_alert_nuevo_analisislab_vacio.Visible = true;
+            }
 
 
         }
@@ -1040,6 +1086,24 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             else
             {
                 lbl_unidad_medida.Text = "";
+            }
+
+            //colapse_nuevo_analisis.Attributes.Remove("class");
+            //colapse_nuevo_analisis.Attributes.Add("class", "panel-collapse collapse in");
+        }
+
+        protected void ddl_AnalisisLab_edit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddl = (DropDownList)sender;
+            hidTAB.Value = "analisis_clinicos";
+
+            if (ddl.SelectedValue != "-1")
+            {
+                lb_edit_resultado.Text = CCHEN_FichaMedica_Negocio.RegistroClinico.UnidadMedidaDeLaboratorio(Int32.Parse(ddl.SelectedValue));
+            }
+            else
+            {
+                lb_edit_resultado.Text = "";
             }
 
             //colapse_nuevo_analisis.Attributes.Remove("class");
@@ -1076,6 +1140,7 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
         {
             div_nuevo_analisis.Visible = false;
             div_resultado_analisis.Visible = false;
+            div_detalle_analisis.Visible = false;
             btn_nuevo_analisis.Visible = true;
 
             hidTAB.Value = "analisis_clinicos";
@@ -1163,6 +1228,8 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
         {
             GridViewRow gvRow = gvAnalisisLab.Rows[index];
             ControlAlert();
+
+            //lb_edit_nombreArchivo.Attributes["disabled"] = "disabled";
             div_detalle_analisis.Visible = true;
             Llena_AnalisisLaboratorio(ddl_edit_analisisLab);
             Llena_EstadoAnalisis(ddl_edit_estado);
@@ -1174,40 +1241,82 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             tb_edit_lugar.Text = gvAnalisisLab.DataKeys[index].Values["Lugar"].ToString();
             ddl_edit_estado.SelectedValue = gvAnalisisLab.DataKeys[index].Values["idEstado"].ToString();
             Session["idAnacli"] = Int32.Parse(gvAnalisisLab.DataKeys[index].Values["ID"].ToString());
+            _AnalisisSeleccionado = Convert.ToInt32(Session["idAnacli"].ToString());
             Session["nombreArchivo"] = gvAnalisisLab.DataKeys[index].Values["NombreArchivo"].ToString();
             lb_edit_nombreArchivo.Text = Session["nombreArchivo"].ToString();
             Session["ruta"] = gvAnalisisLab.DataKeys[index].Values["Ruta"].ToString();
             Session["Tamano"] = Int32.Parse(gvAnalisisLab.DataKeys[index].Values["Tamano"].ToString());
             /* TRAER EL ARCHIVO CARGADO. POR AHORA NO SE PUEDE.*/
 
+            if (Convert.ToInt32(gvAnalisisLab.DataKeys[index].Values["idEstado"].ToString()) == 2)
+            {
+                tb_edit_fecha.Visible = false;
+                tb_edit_fecha_cerrada.Visible = true;
+
+                tb_edit_fecha_cerrada.Text = gvAnalisisLab.DataKeys[index].Values["Fecha"].ToString();
+
+                ddl_edit_analisisLab.Attributes["disabled"] = "disabled";
+                tb_edit_resultado.Attributes["disabled"] = "disabled";
+                tb_edit_lugar.Attributes["disabled"] = "disabled";
+                ddl_edit_estado.Attributes["disabled"] = "disabled";
+                btn_edit_editar.Visible = false;
+                btn_edit_eliminar.Visible = false;
+                //fu_edit_examen.Visible = false;
+            }
+            else
+            {
+                tb_edit_fecha.Visible = true;
+                tb_edit_fecha_cerrada.Visible = false;
+
+
+                ddl_edit_analisisLab.Attributes.Remove("disabled");
+                tb_edit_resultado.Attributes.Remove("disabled");
+                tb_edit_lugar.Attributes.Remove("disabled");
+                ddl_edit_estado.Attributes.Remove("disabled");
+                btn_edit_editar.Visible = true;
+                btn_edit_eliminar.Visible = true;
+                //fu_edit_examen.Visible = true;
+            }
+
         }
 
         protected void btn_edit_editar_Click(object sender, EventArgs e)
         {
-            int id = CCHEN_FichaMedica_Negocio.Paciente.ObtenerIdRegistroClinico(Int32.Parse(Session["RutPaciente"].ToString()));
-            int analisis = Int32.Parse(ddl_edit_analisisLab.SelectedValue);
-            DateTime fechaAnalisis = DateTime.Parse(tb_edit_fecha.Text);
-            string resultado = tb_edit_resultado.Text;
-            string unidad = lb_edit_resultado.Text;
-            string lugar = tb_edit_lugar.Text;
-            int estado = Int32.Parse(ddl_edit_estado.SelectedValue);
-            string nombreArchivo = Session["NombreArchivo"].ToString();
-            string[] archivoExt = nombreArchivo.Split('.');
-            string extArchivo = archivoExt[archivoExt.Length - 1];
-            byte[] archivo = null;
-            string ruta = Session["ruta"].ToString();
-            int tamano = (Int32)Session["Tamano"];
-            bool exito = true;
-            int id_anacli = (Int32)Session["idAnaCli"];
-
-            try
+            if (tb_edit_fecha.Text.ToString() != "" && tb_edit_resultado.Text.ToString() != "" && tb_edit_lugar.Text.ToString() != "")
             {
-                CCHEN_FichaMedica_Negocio.RegistroClinico.actualizar_analisisLab_archivo(id, analisis, fechaAnalisis, resultado, unidad, lugar, estado, nombreArchivo, extArchivo, archivo, ruta, tamano, id_anacli);
+                int id = CCHEN_FichaMedica_Negocio.Paciente.ObtenerIdRegistroClinico(Int32.Parse(Session["RutPaciente"].ToString()));
+                int analisis = Int32.Parse(ddl_edit_analisisLab.SelectedValue);
+                DateTime fechaAnalisis = DateTime.Parse(tb_edit_fecha.Text);
+                string resultado = tb_edit_resultado.Text;
+                string unidad = lb_edit_resultado.Text;
+                string lugar = tb_edit_lugar.Text;
+                int estado = Int32.Parse(ddl_edit_estado.SelectedValue);
+                string nombreArchivo = Session["NombreArchivo"].ToString();
+                string[] archivoExt = nombreArchivo.Split('.');
+                string extArchivo = archivoExt[archivoExt.Length - 1];
+                byte[] archivo = null;
+                string ruta = Session["ruta"].ToString();
+                int tamano = (Int32)Session["Tamano"];
+                bool exito = true;
+                int id_anacli = (Int32)Session["idAnaCli"];
 
+                try
+                {
+                    CCHEN_FichaMedica_Negocio.RegistroClinico.actualizar_analisisLab_archivo(id, analisis, fechaAnalisis, resultado, unidad, lugar, estado, nombreArchivo, extArchivo, archivo, ruta, tamano, id_anacli);
+                    ControlAlert();
+                    btn_consulta_buscar_Click(sender, e);
+                    div_alert_edit_exito.Visible = true;
+                    
+                }
+                catch (Exception ex)
+                {
+                    // Mensaje que hubo un error al guardar.
+                }
             }
-            catch (Exception ex)
+            else
             {
-                // Mensaje que hubo un error al guardar.
+                ControlAlert();
+                div_alert_editar_analisislab_vacio.Visible = true;
             }
         }
 
@@ -1245,6 +1354,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
 
         protected void btn_edit_eliminar_Click(object sender, EventArgs e)
         {
+            DataSet ElimAnaCli = new DataSet();
+            ElimAnaCli = CCHEN_FichaMedica_Negocio.RegistroClinico.EliminarAnalisisClinico(_AnalisisSeleccionado);
+
+            ControlAlert();
+            btn_consulta_buscar_Click(sender, e);
+            div_nuevo_analisis.Visible = false;
+            div_resultado_analisis.Visible = true;
+            div_detalle_analisis.Visible = false;
+            div_alert_eliminar_exito.Visible = true;
 
         }
     }
