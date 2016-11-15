@@ -1170,7 +1170,8 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             hdnFechaEdit.Value = DateTime.Parse(Server.HtmlDecode(gvRow.Cells[4].Text)).ToShortDateString();
             tb_edit_resultado.Text = gvAnalisisLab.DataKeys[index].Values["Resultado"].ToString(); ;
             lb_edit_resultado.Text = gvAnalisisLab.DataKeys[index].Values["Unidad"].ToString();
-            tb_edit_lugar.Text = Server.HtmlDecode(gvRow.Cells[7].Text);
+            //tb_edit_lugar.Text = Server.HtmlDecode(gvRow.Cells[7].Text);
+            tb_edit_lugar.Text = gvAnalisisLab.DataKeys[index].Values["Lugar"].ToString();
             ddl_edit_estado.SelectedValue = gvAnalisisLab.DataKeys[index].Values["idEstado"].ToString();
             Session["idAnacli"] = Int32.Parse(gvAnalisisLab.DataKeys[index].Values["ID"].ToString());
             Session["nombreArchivo"] = gvAnalisisLab.DataKeys[index].Values["NombreArchivo"].ToString();

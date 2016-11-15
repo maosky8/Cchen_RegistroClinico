@@ -417,7 +417,7 @@
                      <div class="panel-body">  
                 <asp:GridView ID="gvAnalisisLab" CssClass="table table-striped" 
                     AutoGenerateColumns="False" 
-                    Width="100%" DataKeyNames="ID, Id_AnalisisLab, Resultado, Unidad, idEstado, NombreArchivo, Ruta, Tamano"
+                    Width="100%" DataKeyNames="ID, Id_AnalisisLab, Resultado, Unidad, idEstado, NombreArchivo, Ruta, Tamano, Lugar"
                     runat="server" OnRowCommand="gvAnalisisLab_RowCommand">
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" Visible="false" ItemStyle-Width="0%"></asp:BoundField>
@@ -483,7 +483,7 @@
         <div class="col-sm-12" align="center"><asp:Button ID="btn_Ingresar" runat="server" Text="Grabar Nuevo Análisis de Laboratorio" class="btn btn-primary" OnClick="btn_Ingresar_Click"/></div>
 </div></div>
 
-
+         
         <div class="panel panel-info" id="div_detalle_analisis" runat="server" visible="false">
                             <div class="panel-heading"><h3 class="panel-title">Detalle Análisis de Laboratorio</h3></div>
                             <div class="panel-body">
@@ -514,7 +514,7 @@
                                     </div>
                                     <div>&nbsp;</div><div>&nbsp;</div>
                                     <div class="col-sm-12" align="center"><asp:Button ID="btn_edit_editar" runat="server" Text="Grabar Análisis Clínico" class="btn btn-primary" OnClick="btn_edit_editar_Click" />
-                                        &nbsp;<asp:Button ID="btn_edit_eliminar" runat="server" Text="Eliminar Análisis Clínico" class="btn btn-primary" OnClick="btn_edit_eliminar_Click" />
+                                        &nbsp;<asp:Button ID="btn_edit_eliminar" runat="server" Text="Eliminar Análisis Clínico" class="btn btn-primary" OnClick="btn_edit_eliminar_Click" formnovalidate />
                                     </div>
                                     <div class="alert alert-success" id="div_edit_exito" runat="server" visible="false">
                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
