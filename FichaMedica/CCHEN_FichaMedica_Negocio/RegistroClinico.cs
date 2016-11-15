@@ -708,6 +708,7 @@ namespace CCHEN_FichaMedica_Negocio
                     NombreArchivo = df["NombreArchivo"].ToString(),
                     Ruta = df["Ruta"].ToString(),
                     Tamano = Convert.ToInt32(df["Tamano"].ToString()),
+                    IDnombreAnalisisClinico = df["IDNOMBREANALISISCLINICO"].ToString()
                 })).ToList();
 
             return list;

@@ -367,7 +367,7 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             string AnalisisClinico = "RC_Ver_AnalisisClinico";
             string RegistroHistorico = "RC_Ver_RegistroHistorico";
 
-            //if (ControlDisplay(ModificarPaciente)) btn_modificar_paciente.Visible = true; else btn_modificar_paciente.Visible = false;
+            if (ControlDisplay(ModificarPaciente)) btn_modificar_paciente.Visible = true; else btn_modificar_paciente.Visible = false;
             if (ControlDisplay(HistorialAtenciones)) div_historial_atenciones.Visible = true; else { div_historial_atenciones.Visible = false; div_alert_historial_atenciones_error.Visible = true; }
             if (ControlDisplay(LicenciaOperacional)) div_licencias_operacionales.Visible = true; else { div_licencias_operacionales.Visible = false; div_alert_licencias_operacionales_error.Visible = true; }
             if (ControlDisplay(AnalisisClinico)) div_analisis_clinicos.Visible = true; else { div_analisis_clinicos.Visible = false; div_alert_analisis_clinicos_error.Visible = true; }
@@ -401,6 +401,8 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             div_alert_nuevalicope_error.Visible = false;
             div_alert_eliminarlicope_ok.Visible = false;
             div_alert_modificarlicope_ok.Visible = false;
+            div_alert_busqueda_analisislab_error.Visible = false;
+            div_alert_analisis_clinicos_exito.Visible = false;
         }
 
 
@@ -1040,8 +1042,8 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
                 lbl_unidad_medida.Text = "";
             }
 
-            colapse_nuevo_analisis.Attributes.Remove("class");
-            colapse_nuevo_analisis.Attributes.Add("class", "panel-collapse collapse in");
+            //colapse_nuevo_analisis.Attributes.Remove("class");
+            //colapse_nuevo_analisis.Attributes.Add("class", "panel-collapse collapse in");
         }
 
         protected void LimpiaNuevoanalisis()
@@ -1072,6 +1074,10 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
 
         protected void btn_consulta_buscar_Click(object sender, EventArgs e)
         {
+            div_nuevo_analisis.Visible = false;
+            div_resultado_analisis.Visible = false;
+            btn_nuevo_analisis.Visible = true;
+
             hidTAB.Value = "analisis_clinicos";
             ControlAlert();
             CCHEN_FichaMedica_Negocio.Custom.DatosBuscadorAnalisisLab objeto = new CCHEN_FichaMedica_Negocio.Custom.DatosBuscadorAnalisisLab();
@@ -1101,14 +1107,18 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             if (Lista == null || Lista.Count == 0)
             {
                 ControlAlert();
+                div_alert_busqueda_analisislab_error.Visible = true;
+                div_resultado_analisis.Visible = false;
             }
             else
             {
+                ControlAlert();
+                div_resultado_analisis.Visible = true;
                 TableAnalisisLab = ToDataTable(Lista.ToList());
                 gvAnalisisLab.DataSource = Lista.OrderBy(p => p.ID);
                 gvAnalisisLab.DataBind();
-                colapse_consulta_analisis_clinico.Attributes.Remove("class");
-                colapse_consulta_analisis_clinico.Attributes.Add("class", "panel-collapse collapse in");
+                //colapse_consulta_analisis_clinico.Attributes.Remove("class");
+                //colapse_consulta_analisis_clinico.Attributes.Add("class", "panel-collapse collapse in");
             }
 
         }
@@ -1153,11 +1163,11 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
         {
             GridViewRow gvRow = gvAnalisisLab.Rows[index];
             ControlAlert();
-            div_edit_analisisLab.Visible = true;
+            div_detalle_analisis.Visible = true;
             Llena_AnalisisLaboratorio(ddl_edit_analisisLab);
             Llena_EstadoAnalisis(ddl_edit_estado);
             ddl_edit_analisisLab.SelectedValue = gvAnalisisLab.DataKeys[index].Values["Id_AnalisisLab"].ToString();
-            hdnFechaEdit.Value = DateTime.Parse(Server.HtmlDecode(gvRow.Cells[3].Text)).ToShortDateString();
+            hdnFechaEdit.Value = DateTime.Parse(Server.HtmlDecode(gvRow.Cells[4].Text)).ToShortDateString();
             tb_edit_resultado.Text = gvAnalisisLab.DataKeys[index].Values["Resultado"].ToString(); ;
             lb_edit_resultado.Text = gvAnalisisLab.DataKeys[index].Values["Unidad"].ToString();
             tb_edit_lugar.Text = Server.HtmlDecode(gvRow.Cells[7].Text);
@@ -1220,6 +1230,21 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
             DataSet ModificarPaciente = new DataSet();
             ModificarPaciente = CCHEN_FichaMedica_Negocio.RegistroClinico.ModificarPaciente(objeto);
             Response.Redirect("Paciente.aspx?rut="+ Session["RutPaciente"].ToString());
+        }
+
+        protected void btn_nuevo_analisis_Click(object sender, EventArgs e)
+        {
+            hidTAB.Value = "analisis_clinicos";
+            ControlAlert();
+            div_detalle_analisis.Visible = false;
+            div_nuevo_analisis.Visible = true;
+            div_resultado_analisis.Visible = false;
+            btn_nuevo_analisis.Visible = false;
+        }
+
+        protected void btn_edit_eliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

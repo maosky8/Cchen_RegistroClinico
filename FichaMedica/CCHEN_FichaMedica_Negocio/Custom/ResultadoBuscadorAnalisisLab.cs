@@ -9,7 +9,7 @@ namespace CCHEN_FichaMedica_Negocio.Custom
     {
         public int ID { get; set; }
         public int Id_AnalisisLab { get; set; }
-        public string AnalisisLab { get; set;  }
+        public string AnalisisLab { get; set; }
         public string Fecha { get; set; }
         public string Resultado { get; set; }
         public string Unidad { get; set; }
@@ -20,5 +20,6 @@ namespace CCHEN_FichaMedica_Negocio.Custom
         public string NombreArchivo { get; set; }
         public string Ruta { get; set; }
         public int Tamano { get; set; }
+        public string IDnombreAnalisisClinico { get; set;}
     }
 }

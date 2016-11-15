@@ -544,15 +544,6 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_analisis_clinicos_error;
         
         /// <summary>
-        /// Control div_alert_analisis_clinicos_exito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_analisis_clinicos_exito;
-        
-        /// <summary>
         /// Control div_analisis_clinicos.
         /// </summary>
         /// <remarks>
@@ -562,22 +553,112 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_analisis_clinicos;
         
         /// <summary>
-        /// Control div_ingreso_analisis_clinico.
+        /// Control div_alert_analisis_clinicos_exito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_ingreso_analisis_clinico;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_analisis_clinicos_exito;
         
         /// <summary>
-        /// Control colapse_nuevo_analisis.
+        /// Control div_filtros_analisis.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl colapse_nuevo_analisis;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_filtros_analisis;
+        
+        /// <summary>
+        /// Control ddl_consulta_analisis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_consulta_analisis;
+        
+        /// <summary>
+        /// Control ddl_consulta_estado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_consulta_estado;
+        
+        /// <summary>
+        /// Control tb_consulta_desde.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_consulta_desde;
+        
+        /// <summary>
+        /// Control tb_consulta_hasta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_consulta_hasta;
+        
+        /// <summary>
+        /// Control btn_consulta_buscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_consulta_buscar;
+        
+        /// <summary>
+        /// Control btn_nuevo_analisis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_nuevo_analisis;
+        
+        /// <summary>
+        /// Control div_alert_busqueda_analisislab_error.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert_busqueda_analisislab_error;
+        
+        /// <summary>
+        /// Control div_resultado_analisis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_resultado_analisis;
+        
+        /// <summary>
+        /// Control gvAnalisisLab.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvAnalisisLab;
+        
+        /// <summary>
+        /// Control div_nuevo_analisis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_nuevo_analisis;
         
         /// <summary>
         /// Control ddl_AnalisisLab.
@@ -643,94 +724,13 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.Button btn_Ingresar;
         
         /// <summary>
-        /// Control div2.
+        /// Control div_detalle_analisis.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
-        
-        /// <summary>
-        /// Control colapse_consulta_analisis_clinico.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl colapse_consulta_analisis_clinico;
-        
-        /// <summary>
-        /// Control ddl_consulta_analisis.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_consulta_analisis;
-        
-        /// <summary>
-        /// Control ddl_consulta_estado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_consulta_estado;
-        
-        /// <summary>
-        /// Control tb_consulta_desde.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_consulta_desde;
-        
-        /// <summary>
-        /// Control tb_consulta_hasta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_consulta_hasta;
-        
-        /// <summary>
-        /// Control btn_consulta_buscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_consulta_buscar;
-        
-        /// <summary>
-        /// Control div_resultado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_resultado;
-        
-        /// <summary>
-        /// Control gvAnalisisLab.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAnalisisLab;
-        
-        /// <summary>
-        /// Control div_edit_analisisLab.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_edit_analisisLab;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_detalle_analisis;
         
         /// <summary>
         /// Control div_edit_form.
@@ -775,7 +775,7 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_edit_resultado;
+        protected global::System.Web.UI.WebControls.TextBox lb_edit_resultado;
         
         /// <summary>
         /// Control tb_edit_lugar.
@@ -796,22 +796,13 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         protected global::System.Web.UI.WebControls.DropDownList ddl_edit_estado;
         
         /// <summary>
-        /// Control lb_mensaje_edit.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_mensaje_edit;
-        
-        /// <summary>
         /// Control lb_edit_nombreArchivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_edit_nombreArchivo;
+        protected global::System.Web.UI.WebControls.TextBox lb_edit_nombreArchivo;
         
         /// <summary>
         /// Control fu_edit_examen.
@@ -830,6 +821,15 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_edit_editar;
+        
+        /// <summary>
+        /// Control btn_edit_eliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_edit_eliminar;
         
         /// <summary>
         /// Control div_edit_exito.
