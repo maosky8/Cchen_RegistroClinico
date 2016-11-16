@@ -6,7 +6,7 @@
 * Objetivo                      :  modifica paciente
 SELECT * FROM rc_paciente rc_cita
 **********************************************************************************************/      
-create PROCEDURE [dbo].[RC_SP_upd_paciente]      
+alter PROCEDURE [dbo].[RC_SP_upd_paciente]      
 @SEDE INT = NULL,
 @DEPARTAMENTO INT = NULL, 
 @NIVELEDUCACIONAL INT = NULL,
@@ -17,7 +17,8 @@ create PROCEDURE [dbo].[RC_SP_upd_paciente]
 @DIRECCION VARCHAR(100) = NULL, 
 @FONO VARCHAR(12) = NULL,
 @FONOEMERGENCIA VARCHAR(12) = NULL,
-@CONTACTOEMERGENCIA VARCHAR(100) = NULL
+@CONTACTOEMERGENCIA VARCHAR(100) = NULL,
+@RUT INT
 
 
 AS 
@@ -35,5 +36,6 @@ BEGIN
 	RC_PACIENTE_fono = @FONO,
 	RC_PACIENTE_fono_emergencia = @FONOEMERGENCIA,
 	RC_PACIENTE_contacto_emergencia = @CONTACTOEMERGENCIA 
+	WHERE RC_PACIENTE_rut = @RUT
 END
 

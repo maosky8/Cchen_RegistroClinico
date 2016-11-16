@@ -275,7 +275,7 @@ namespace CCHEN_FichaMedica_Negocio
         {
             string procedimiento = "RC_SP_upd_Paciente";
 
-            SqlParameter[] dbParams = new SqlParameter[11];
+            SqlParameter[] dbParams = new SqlParameter[12];
 
             dbParams[0] = new SqlParameter("@SEDE", SqlDbType.Int);
             dbParams[0].Value = dto.Sede;
@@ -299,6 +299,8 @@ namespace CCHEN_FichaMedica_Negocio
             if (dto.FonoEmergencia.ToString() != "") { dbParams[9].Value = dto.FonoEmergencia; } else dbParams[9].Value = null;
             dbParams[10] = new SqlParameter("@CONTACTOEMERGENCIA", SqlDbType.VarChar);
             if (dto.ContactoEmergencia != "") { dbParams[10].Value = dto.ContactoEmergencia; } else dbParams[10].Value = null;
+            dbParams[11] = new SqlParameter("@RUT", SqlDbType.Int);
+            if (dto.ContactoEmergencia != "") { dbParams[11].Value = dto.RutPaciente; } else dbParams[11].Value = null;
 
 
             return CCHEN_FichaMedica_Datos.Login.ExecuteDataSet_rc(procedimiento, dbParams);

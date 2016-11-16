@@ -1325,6 +1325,7 @@ namespace CCHEN_FichaMedica_Web.RegistroClinico
         {
             CCHEN_FichaMedica_Negocio.Custom.DatosNuevoPaciente objeto = new CCHEN_FichaMedica_Negocio.Custom.DatosNuevoPaciente();
 
+            objeto.RutPaciente = Convert.ToInt32(Session["RutPaciente"].ToString());
             objeto.Profesion = lbl_profesion.Text.ToString();
             objeto.Ocupacion = lbl_ocupacion.Text.ToString();
             objeto.FonoContacto = lbl_fono_contacto.Text.ToString();
